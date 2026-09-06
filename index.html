@@ -2,8 +2,8 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Nebula Messenger 0.7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebula Messenger 0.8</title>
 
 <style>
 *{
@@ -23,13 +23,12 @@ button,input{
 }
 
 .app{
-    width:100%;
     max-width:520px;
     min-height:100vh;
     margin:auto;
     background:#101525;
-    overflow:hidden;
     position:relative;
+    overflow:hidden;
 }
 
 /* AUTH */
@@ -37,16 +36,16 @@ button,input{
 .auth{
     min-height:100vh;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     padding:25px;
 }
 
 .auth-box{
     width:100%;
-    background:#151b2d;
     padding:28px;
     border-radius:25px;
+    background:#151b2d;
     border:1px solid #27304a;
     box-shadow:0 20px 60px #0008;
 }
@@ -57,14 +56,14 @@ button,input{
 }
 
 .logo-icon{
-    width:75px;
-    height:75px;
+    width:78px;
+    height:78px;
     margin:auto;
     display:flex;
-    align-items:center;
     justify-content:center;
-    border-radius:22px;
-    font-size:38px;
+    align-items:center;
+    border-radius:23px;
+    font-size:39px;
     background:linear-gradient(135deg,#6c5ce7,#00cec9);
 }
 
@@ -74,7 +73,7 @@ button,input{
 }
 
 .logo p{
-    color:#818ba5;
+    color:#7e89a4;
     font-size:12px;
     margin-top:6px;
 }
@@ -92,6 +91,7 @@ button,input{
     border-radius:13px;
     background:#202840;
     color:#aab3c9;
+    cursor:pointer;
 }
 
 .tab.active{
@@ -122,8 +122,8 @@ button,input{
 
 .main-btn{
     width:100%;
-    border:0;
     padding:14px;
+    border:0;
     border-radius:14px;
     background:#6c5ce7;
     color:white;
@@ -146,10 +146,10 @@ button,input{
 }
 
 .header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
     padding:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     border-bottom:1px solid #202840;
 }
 
@@ -159,6 +159,11 @@ button,input{
 
 .header small{
     color:#707b96;
+}
+
+.header-buttons{
+    display:flex;
+    gap:7px;
 }
 
 .icon-btn{
@@ -174,23 +179,23 @@ button,input{
 
 .profile{
     margin:15px;
-    padding:14px;
-    border-radius:18px;
+    padding:15px;
     display:flex;
     align-items:center;
     gap:12px;
-    background:linear-gradient(135deg,#1c2440,#151b2d);
+    border-radius:19px;
+    background:linear-gradient(135deg,#1d2542,#151b2d);
 }
 
 .profile-avatar{
-    width:50px;
-    height:50px;
+    width:53px;
+    height:53px;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:15px;
-    background:#282f49;
-    font-size:25px;
+    border-radius:16px;
+    background:#292f49;
+    font-size:27px;
 }
 
 .profile-info{
@@ -202,12 +207,19 @@ button,input{
 }
 
 .profile-info span{
-    color:#707b96;
     font-size:11px;
 }
 
+.status-online{
+    color:#00cec9;
+}
+
+.status-offline{
+    color:#747f98;
+}
+
 .search{
-    padding:0 15px 12px;
+    padding:0 15px 13px;
 }
 
 .search input{
@@ -220,19 +232,42 @@ button,input{
     outline:none;
 }
 
-.section-title{
+.nav{
     display:flex;
-    justify-content:space-between;
-    padding:8px 18px;
-    color:#737e98;
+    margin:0 12px 10px;
+    padding:4px;
+    border-radius:14px;
+    background:#181f32;
+}
+
+.nav button{
+    flex:1;
+    border:0;
+    padding:11px;
+    border-radius:11px;
+    background:none;
+    color:#78839d;
+    cursor:pointer;
+}
+
+.nav button.active{
+    background:#292f49;
+    color:white;
+}
+
+.section-title{
+    padding:7px 18px;
+    color:#78839d;
     font-size:12px;
 }
 
-.chat-list{
+.chat-list,
+.contacts{
     padding:0 9px 20px;
 }
 
-.chat-item{
+.chat-item,
+.contact-item{
     display:flex;
     align-items:center;
     gap:11px;
@@ -241,76 +276,68 @@ button,input{
     cursor:pointer;
 }
 
-.chat-item:hover{
+.chat-item:hover,
+.contact-item:hover{
     background:#1b2235;
 }
 
-.chat-avatar{
+.avatar{
     width:50px;
     height:50px;
     flex-shrink:0;
-    border-radius:16px;
-    background:#252d47;
     display:flex;
     align-items:center;
     justify-content:center;
+    border-radius:16px;
+    background:#252d47;
     font-size:25px;
     position:relative;
 }
 
-.pin{
+.online-dot{
     position:absolute;
-    bottom:-3px;
-    left:-3px;
-    font-size:12px;
+    width:10px;
+    height:10px;
+    left:0;
+    bottom:1px;
+    border-radius:50%;
+    background:#00cec9;
+    border:2px solid #101525;
 }
 
-.chat-info{
+.offline-dot{
+    position:absolute;
+    width:10px;
+    height:10px;
+    left:0;
+    bottom:1px;
+    border-radius:50%;
+    background:#69748d;
+    border:2px solid #101525;
+}
+
+.info{
     flex:1;
     min-width:0;
 }
 
-.chat-top{
-    display:flex;
-    justify-content:space-between;
-    gap:5px;
+.info b{
+    display:block;
 }
 
-.chat-top b{
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-}
-
-.chat-time{
-    color:#68738d;
-    font-size:10px;
-}
-
-.last-message{
+.info span{
+    display:block;
+    margin-top:4px;
     color:#737e98;
-    font-size:12px;
-    margin-top:5px;
+    font-size:11px;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
-}
-
-.unread{
-    min-width:20px;
-    height:20px;
-    padding:0 5px;
-    border-radius:20px;
-    background:#6c5ce7;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:10px;
 }
 
 .empty{
     text-align:center;
-    color:#68738d;
+    color:#69748e;
     padding:40px 20px;
 }
 
@@ -334,19 +361,8 @@ button,input{
     border:0;
     background:none;
     color:white;
-    font-size:27px;
+    font-size:28px;
     cursor:pointer;
-}
-
-.chat-avatar-head{
-    width:43px;
-    height:43px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#252d47;
-    border-radius:13px;
-    font-size:21px;
 }
 
 .chat-title{
@@ -358,7 +374,6 @@ button,input{
 }
 
 .chat-title span{
-    color:#00cec9;
     font-size:10px;
 }
 
@@ -419,6 +434,123 @@ button,input{
     background:#6c5ce7;
     color:white;
     font-size:18px;
+    cursor:pointer;
+}
+
+/* PROFILE PAGE */
+
+.profile-page{
+    display:none;
+    position:absolute;
+    inset:0;
+    z-index:30;
+    background:#101525;
+}
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:18px;
+    border-bottom:1px solid #202840;
+}
+
+.page-header button{
+    border:0;
+    background:none;
+    color:white;
+    font-size:27px;
+    cursor:pointer;
+}
+
+.profile-big{
+    width:105px;
+    height:105px;
+    margin:28px auto 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:30px;
+    background:#252d47;
+    font-size:52px;
+}
+
+.profile-page-name{
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.profile-page-status{
+    text-align:center;
+    color:#00cec9;
+    font-size:11px;
+    margin-top:5px;
+}
+
+.card{
+    margin:18px;
+    padding:16px;
+    border-radius:17px;
+    background:#181f32;
+}
+
+.card label{
+    display:block;
+    color:#77829c;
+    font-size:11px;
+    margin-bottom:8px;
+}
+
+.card input{
+    width:100%;
+    padding:12px;
+    border:1px solid #2a3450;
+    border-radius:12px;
+    background:#0c111e;
+    color:white;
+    outline:none;
+}
+
+.avatar-picker{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.avatar-choice{
+    width:45px;
+    height:45px;
+    border:2px solid transparent;
+    border-radius:13px;
+    background:#202840;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.avatar-choice.selected{
+    border-color:#6c5ce7;
+}
+
+.save-btn{
+    width:100%;
+    margin-top:10px;
+    padding:13px;
+    border:0;
+    border-radius:13px;
+    background:#6c5ce7;
+    color:white;
+    font-weight:bold;
+}
+
+.logout{
+    width:calc(100% - 36px);
+    margin:0 18px;
+    padding:13px;
+    border:0;
+    border-radius:13px;
+    background:#392129;
+    color:#ff7675;
 }
 
 /* SETTINGS */
@@ -431,57 +563,22 @@ button,input{
     background:#101525;
 }
 
-.settings-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:18px;
-    border-bottom:1px solid #202840;
-}
-
-.settings-header button{
-    border:0;
-    background:none;
-    color:white;
-    font-size:26px;
-}
-
 .settings-body{
     padding:20px;
 }
 
-.big-avatar{
-    width:90px;
-    height:90px;
-    margin:10px auto 20px;
-    border-radius:25px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#252d47;
-    font-size:45px;
-}
-
 .setting-card{
-    background:#181f32;
     padding:16px;
-    border-radius:16px;
     margin-bottom:12px;
+    border-radius:16px;
+    background:#181f32;
 }
 
 .setting-card span{
-    color:#707b96;
+    color:#727d97;
     font-size:11px;
 }
 
-.danger{
-    width:100%;
-    padding:13px;
-    border:0;
-    border-radius:14px;
-    background:#392129;
-    color:#ff7675;
-}
 </style>
 </head>
 
@@ -498,12 +595,15 @@ button,input{
 <div class="logo">
 <div class="logo-icon">☄️</div>
 <h1>Nebula Messenger</h1>
-<p>نسخه 0.7 • Chat Edition</p>
+<p>نسخه 0.8 • Profile Edition</p>
 </div>
 
 <div class="tabs">
-<button class="tab active" id="loginTab" onclick="switchAuth('login')">ورود</button>
-<button class="tab" id="registerTab" onclick="switchAuth('register')">ثبت‌نام</button>
+<button class="tab active" id="loginTab"
+onclick="switchAuth('login')">ورود</button>
+
+<button class="tab" id="registerTab"
+onclick="switchAuth('register')">ثبت‌نام</button>
 </div>
 
 <div id="loginForm">
@@ -533,7 +633,7 @@ button,input{
 
 <div class="field">
 <label>رمز عبور</label>
-<input id="registerPassword" type="password" placeholder="حداقل ۴ کاراکتر">
+<input id="registerPassword" type="password">
 </div>
 
 <div class="field">
@@ -556,13 +656,24 @@ button,input{
 <div class="home" id="home">
 
 <div class="header">
+
 <div>
 <h2>💬 Nebula</h2>
-<small>پیام‌رسان من</small>
+<small>نسخه 0.8</small>
 </div>
 
-<button class="icon-btn" onclick="openSettings()">⚙️</button>
+<div class="header-buttons">
+
+<button class="icon-btn"
+onclick="openProfile()">👤</button>
+
+<button class="icon-btn"
+onclick="openSettings()">⚙️</button>
+
 </div>
+
+</div>
+
 
 <div class="profile">
 
@@ -570,23 +681,55 @@ button,input{
 
 <div class="profile-info">
 <b id="myName">---</b>
-<span>آنلاین</span>
+<span class="status-online">● آنلاین</span>
 </div>
 
 </div>
+
 
 <div class="search">
 <input id="searchInput"
-placeholder="🔎 جستجوی چت..."
-oninput="renderChats()">
+placeholder="🔎 جستجو..."
+oninput="renderCurrentPage()">
 </div>
 
+
+<div class="nav">
+
+<button id="chatsTab"
+class="active"
+onclick="showPage('chats')">
+💬 چت‌ها
+</button>
+
+<button id="contactsTab"
+onclick="showPage('contacts')">
+👥 مخاطبین
+</button>
+
+</div>
+
+
+<div id="chatsPage">
+
 <div class="section-title">
-<span>چت‌ها</span>
-<span id="chatCount">0</span>
+چت‌های اخیر
 </div>
 
 <div class="chat-list" id="chatList"></div>
+
+</div>
+
+
+<div id="contactsPage" style="display:none">
+
+<div class="section-title">
+همه کاربران
+</div>
+
+<div class="contacts" id="contacts"></div>
+
+</div>
 
 </div>
 
@@ -597,20 +740,32 @@ oninput="renderChats()">
 
 <div class="chat-header">
 
-<button class="back" onclick="closeChat()">‹</button>
+<button class="back"
+onclick="closeChat()">‹</button>
 
-<div class="chat-avatar-head" id="chatAvatar">🤖</div>
+<div class="avatar" id="chatAvatar">
+🤖
+</div>
 
 <div class="chat-title">
+
 <b id="chatName">---</b>
-<span>● آنلاین</span>
+
+<span id="chatStatus"
+class="status-online">
+● آنلاین
+</span>
+
 </div>
 
-<button class="icon-btn" onclick="clearChat()">🗑️</button>
+<button class="icon-btn"
+onclick="clearChat()">🗑️</button>
 
 </div>
+
 
 <div class="messages" id="messages"></div>
+
 
 <div class="chat-input">
 
@@ -618,9 +773,89 @@ oninput="renderChats()">
 placeholder="پیام بنویس..."
 onkeydown="if(event.key==='Enter')sendMessage()">
 
-<button class="send" onclick="sendMessage()">➤</button>
+<button class="send"
+onclick="sendMessage()">➤</button>
 
 </div>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div class="profile-page" id="profilePage">
+
+<div class="page-header">
+
+<button onclick="closeProfile()">‹</button>
+
+<h2>پروفایل من</h2>
+
+</div>
+
+
+<div class="profile-big"
+id="profileBigAvatar">
+👨‍💻
+</div>
+
+<div class="profile-page-name"
+id="profilePageName">
+---
+</div>
+
+<div class="profile-page-status">
+● آنلاین
+</div>
+
+
+<div class="card">
+
+<label>نام کاربری</label>
+
+<input id="editName"
+maxlength="25">
+
+<label style="margin-top:15px">
+آواتار
+</label>
+
+<div class="avatar-picker">
+
+<button class="avatar-choice selected"
+onclick="chooseAvatar(this,'👨‍💻')">👨‍💻</button>
+
+<button class="avatar-choice"
+onclick="chooseAvatar(this,'😎')">😎</button>
+
+<button class="avatar-choice"
+onclick="chooseAvatar(this,'🚀')">🚀</button>
+
+<button class="avatar-choice"
+onclick="chooseAvatar(this,'👾')">👾</button>
+
+<button class="avatar-choice"
+onclick="chooseAvatar(this,'🤖')">🤖</button>
+
+<button class="avatar-choice"
+onclick="chooseAvatar(this,'🧑‍🚀')">🧑‍🚀</button>
+
+</div>
+
+<button class="save-btn"
+onclick="saveProfile()">
+💾 ذخیره تغییرات
+</button>
+
+<div class="error" id="profileError"></div>
+
+</div>
+
+
+<button class="logout"
+onclick="logout()">
+🚪 خروج از حساب
+</button>
 
 </div>
 
@@ -629,32 +864,32 @@ onkeydown="if(event.key==='Enter')sendMessage()">
 
 <div class="settings" id="settings">
 
-<div class="settings-header">
+<div class="page-header">
+
 <button onclick="closeSettings()">‹</button>
+
 <h2>تنظیمات</h2>
+
 </div>
 
 <div class="settings-body">
 
-<div class="big-avatar" id="settingsAvatar">👨‍💻</div>
-
-<div class="setting-card">
-<b id="settingsName">---</b>
-<br>
-<span>نام کاربری</span>
-</div>
-
 <div class="setting-card">
 <b>Nebula Messenger</b>
 <br>
-<span>نسخه 0.7 • Chat Edition</span>
+<span>نسخه 0.8 • Profile Edition</span>
 </div>
 
-<button class="danger" onclick="logout()">
-🚪 خروج از حساب
-</button>
+<div class="setting-card">
+<b>🔒 حالت محلی</b>
+<br>
+<span>
+اطلاعات این نسخه داخل مرورگر ذخیره می‌شود.
+</span>
+</div>
 
 </div>
+
 </div>
 
 </div>
@@ -667,43 +902,47 @@ localStorage.getItem("nebulaCurrentUser");
 
 let currentChat = null;
 
+let currentPage = "chats";
+
+let selectedProfileAvatar = "👨‍💻";
+
 
 /* USERS */
 
 function getUsers(){
 
-    return JSON.parse(
-        localStorage.getItem("nebulaUsers") || "[]"
-    );
+return JSON.parse(
+localStorage.getItem("nebulaUsers") || "[]"
+);
 
 }
 
 function saveUsers(users){
 
-    localStorage.setItem(
-        "nebulaUsers",
-        JSON.stringify(users)
-    );
+localStorage.setItem(
+"nebulaUsers",
+JSON.stringify(users)
+);
 
 }
 
 
-/* HASH */
+/* PASSWORD */
 
 async function hashPassword(password){
 
-    const data =
-        new TextEncoder().encode(password);
+const data =
+new TextEncoder().encode(password);
 
-    const hash =
-        await crypto.subtle.digest(
-            "SHA-256",
-            data
-        );
+const hash =
+await crypto.subtle.digest(
+"SHA-256",
+data
+);
 
-    return [...new Uint8Array(hash)]
-        .map(x=>x.toString(16).padStart(2,"0"))
-        .join("");
+return [...new Uint8Array(hash)]
+.map(x=>x.toString(16).padStart(2,"0"))
+.join("");
 
 }
 
@@ -712,22 +951,22 @@ async function hashPassword(password){
 
 function switchAuth(type){
 
-    const login =
-        type === "login";
+const login =
+type === "login";
 
-    document.getElementById("loginForm")
-        .style.display =
-        login ? "block" : "none";
+document.getElementById("loginForm")
+.style.display =
+login ? "block" : "none";
 
-    document.getElementById("registerForm")
-        .style.display =
-        login ? "none" : "block";
+document.getElementById("registerForm")
+.style.display =
+login ? "none" : "block";
 
-    document.getElementById("loginTab")
-        .classList.toggle("active",login);
+document.getElementById("loginTab")
+.classList.toggle("active",login);
 
-    document.getElementById("registerTab")
-        .classList.toggle("active",!login);
+document.getElementById("registerTab")
+.classList.toggle("active",!login);
 
 }
 
@@ -736,71 +975,90 @@ function switchAuth(type){
 
 async function register(){
 
-    const username =
-        document.getElementById("registerUsername")
-        .value.trim();
+const username =
+document.getElementById("registerUsername")
+.value.trim();
 
-    const password =
-        document.getElementById("registerPassword")
-        .value;
+const password =
+document.getElementById("registerPassword")
+.value;
 
-    const confirm =
-        document.getElementById("registerConfirm")
-        .value;
+const confirm =
+document.getElementById("registerConfirm")
+.value;
 
-    const error =
-        document.getElementById("registerError");
+const error =
+document.getElementById("registerError");
 
-    error.textContent = "";
+error.textContent = "";
 
-    if(username.length < 3){
-        error.textContent =
-            "نام کاربری خیلی کوتاه است.";
-        return;
-    }
+if(username.length < 3){
 
-    if(password.length < 4){
-        error.textContent =
-            "رمز عبور حداقل ۴ کاراکتر باشد.";
-        return;
-    }
+error.textContent =
+"نام کاربری باید حداقل ۳ کاراکتر باشد.";
 
-    if(password !== confirm){
-        error.textContent =
-            "رمزها یکسان نیستند.";
-        return;
-    }
+return;
 
-    const users = getUsers();
+}
 
-    if(users.some(
-        u => u.name.toLowerCase() === username.toLowerCase()
-    )){
-        error.textContent =
-            "این نام کاربری قبلاً ثبت شده.";
-        return;
-    }
+if(password.length < 4){
 
-    const hash =
-        await hashPassword(password);
+error.textContent =
+"رمز عبور حداقل ۴ کاراکتر باشد.";
 
-    users.push({
-        name:username,
-        avatar:"👨‍💻",
-        passwordHash:hash,
-        createdAt:Date.now()
-    });
+return;
 
-    saveUsers(users);
+}
 
-    currentUser = username;
+if(password !== confirm){
 
-    localStorage.setItem(
-        "nebulaCurrentUser",
-        username
-    );
+error.textContent =
+"رمزها یکسان نیستند.";
 
-    showHome();
+return;
+
+}
+
+const users = getUsers();
+
+if(users.some(
+u=>u.name.toLowerCase() === username.toLowerCase()
+)){
+
+error.textContent =
+"این نام کاربری قبلاً استفاده شده.";
+
+return;
+
+}
+
+const hash =
+await hashPassword(password);
+
+users.push({
+
+name:username,
+
+avatar:"👨‍💻",
+
+passwordHash:hash,
+
+online:true,
+
+createdAt:Date.now()
+
+});
+
+saveUsers(users);
+
+currentUser = username;
+
+localStorage.setItem(
+"nebulaCurrentUser",
+username
+);
+
+showHome();
 
 }
 
@@ -809,47 +1067,56 @@ async function register(){
 
 async function login(){
 
-    const username =
-        document.getElementById("loginUsername")
-        .value.trim();
+const username =
+document.getElementById("loginUsername")
+.value.trim();
 
-    const password =
-        document.getElementById("loginPassword")
-        .value;
+const password =
+document.getElementById("loginPassword")
+.value;
 
-    const error =
-        document.getElementById("loginError");
+const error =
+document.getElementById("loginError");
 
-    const user =
-        getUsers().find(
-            u =>
-            u.name.toLowerCase() ===
-            username.toLowerCase()
-        );
+const user =
+getUsers().find(
+u=>u.name.toLowerCase()
+=== username.toLowerCase()
+);
 
-    if(!user){
-        error.textContent =
-            "نام کاربری یا رمز عبور اشتباه است.";
-        return;
-    }
+if(!user){
 
-    const hash =
-        await hashPassword(password);
+error.textContent =
+"نام کاربری یا رمز عبور اشتباه است.";
 
-    if(hash !== user.passwordHash){
-        error.textContent =
-            "نام کاربری یا رمز عبور اشتباه است.";
-        return;
-    }
+return;
 
-    currentUser = user.name;
+}
 
-    localStorage.setItem(
-        "nebulaCurrentUser",
-        currentUser
-    );
+const hash =
+await hashPassword(password);
 
-    showHome();
+if(hash !== user.passwordHash){
+
+error.textContent =
+"نام کاربری یا رمز عبور اشتباه است.";
+
+return;
+
+}
+
+user.online = true;
+
+saveUsers(getUsers());
+
+currentUser = user.name;
+
+localStorage.setItem(
+"nebulaCurrentUser",
+currentUser
+);
+
+showHome();
 
 }
 
@@ -858,32 +1125,77 @@ async function login(){
 
 function showHome(){
 
-    document.getElementById("auth")
-        .style.display = "none";
+document.getElementById("auth")
+.style.display = "none";
 
-    document.getElementById("home")
-        .style.display = "block";
+document.getElementById("home")
+.style.display = "block";
 
-    document.getElementById("chat")
-        .style.display = "none";
+document.getElementById("chat")
+.style.display = "none";
 
-    const user =
-        getUsers().find(
-            u=>u.name === currentUser
-        );
+const user =
+getUsers().find(
+u=>u.name===currentUser
+);
 
-    if(!user){
-        logout();
-        return;
-    }
+if(!user){
 
-    document.getElementById("myName")
-        .textContent = user.name;
+logout();
 
-    document.getElementById("myAvatar")
-        .textContent = user.avatar;
+return;
 
-    renderChats();
+}
+
+document.getElementById("myName")
+.textContent = user.name;
+
+document.getElementById("myAvatar")
+.textContent = user.avatar;
+
+showPage("chats");
+
+}
+
+
+/* PAGES */
+
+function showPage(page){
+
+currentPage = page;
+
+document.getElementById("chatsPage")
+.style.display =
+page==="chats" ? "block" : "none";
+
+document.getElementById("contactsPage")
+.style.display =
+page==="contacts" ? "block" : "none";
+
+document.getElementById("chatsTab")
+.classList.toggle(
+"active",
+page==="chats"
+);
+
+document.getElementById("contactsTab")
+.classList.toggle(
+"active",
+page==="contacts"
+);
+
+renderCurrentPage();
+
+}
+
+
+function renderCurrentPage(){
+
+if(currentPage==="chats")
+renderChats();
+
+else
+renderContacts();
 
 }
 
@@ -892,164 +1204,207 @@ function showHome(){
 
 function chatKey(a,b){
 
-    return "nebula_chat_" +
-        [a,b].sort().join("_");
+return "nebula_chat_" +
+[a,b].sort().join("_");
 
 }
 
 
-/* CHAT DATA */
+/* CHAT */
 
-function getChat(user){
+function getChat(username){
 
-    return JSON.parse(
-        localStorage.getItem(
-            chatKey(currentUser,user)
-        ) || "[]"
-    );
+return JSON.parse(
+localStorage.getItem(
+chatKey(currentUser,username)
+) || "[]"
+);
 
 }
 
 
-/* RENDER CHATS */
+/* CHATS */
 
 function renderChats(){
 
-    const list =
-        document.getElementById("chatList");
+const list =
+document.getElementById("chatList");
 
-    const search =
-        document.getElementById("searchInput")
-        .value.trim().toLowerCase();
+const search =
+document.getElementById("searchInput")
+.value.trim().toLowerCase();
 
-    const users =
-        getUsers().filter(
-            u => u.name !== currentUser
-        );
+const users =
+getUsers()
+.filter(u=>u.name!==currentUser)
+.filter(u=>
+u.name.toLowerCase()
+.includes(search)
+);
 
-    let chats = users.map(user=>{
+let chats =
+users.map(user=>{
 
-        const messages =
-            getChat(user.name);
+const messages =
+getChat(user.name);
 
-        const last =
-            messages[messages.length-1];
+const last =
+messages[messages.length-1];
 
-        return {
-            user:user,
-            last:last,
-            count:messages.length
-        };
+return {
+user:user,
+last:last
+};
 
-    });
+});
 
-    chats = chats.filter(c=>
-        c.user.name.toLowerCase()
-        .includes(search)
-    );
+chats.sort((a,b)=>
+(b.last?.timestamp||0) -
+(a.last?.timestamp||0)
+);
 
-    chats.sort((a,b)=>{
+list.innerHTML = "";
 
-        if(a.user.pinned && !b.user.pinned)
-            return -1;
+if(chats.length===0){
 
-        if(!a.user.pinned && b.user.pinned)
-            return 1;
+list.innerHTML =
+`<div class="empty">
+هنوز چتی وجود ندارد 💬
+</div>`;
 
-        return (b.last?.timestamp || 0) -
-               (a.last?.timestamp || 0);
+return;
 
-    });
+}
 
-    document.getElementById("chatCount")
-        .textContent = chats.length;
+chats.forEach(c=>{
 
-    list.innerHTML = "";
+const div =
+document.createElement("div");
 
-    if(chats.length === 0){
+div.className = "chat-item";
 
-        list.innerHTML =
-            `<div class="empty">
-                هنوز چتی وجود ندارد 💬
-                <br>
-                از نسخه بعدی می‌توانیم مخاطب اضافه کنیم!
-            </div>`;
+const status =
+c.user.online !== false;
 
-        return;
-    }
+div.innerHTML = `
 
-    chats.forEach(c=>{
+<div class="avatar">
 
-        const div =
-            document.createElement("div");
+${escapeHTML(c.user.avatar)}
 
-        div.className = "chat-item";
+<span class="${
+status
+? "online-dot"
+: "offline-dot"
+}"></span>
 
-        let lastText =
-            c.last
-            ? c.last.text
-            : "شروع گفت‌وگو...";
+</div>
 
-        let time =
-            c.last
-            ? c.last.time
-            : "";
+<div class="info">
 
-        div.innerHTML = `
+<b>${escapeHTML(c.user.name)}</b>
 
-        <div class="chat-avatar">
-            ${escapeHTML(c.user.avatar)}
-            ${c.user.pinned ? '<span class="pin">📌</span>' : ''}
-        </div>
+<span>
+${
+c.last
+? escapeHTML(c.last.text)
+: "شروع گفت‌وگو..."
+}
+</span>
 
-        <div class="chat-info">
+</div>
 
-            <div class="chat-top">
-                <b>${escapeHTML(c.user.name)}</b>
-                <span class="chat-time">${time}</span>
-            </div>
+`;
 
-            <div class="last-message">
-                ${escapeHTML(lastText)}
-            </div>
+div.onclick =
+()=>openChat(c.user.name);
 
-        </div>
+list.appendChild(div);
 
-        `;
-
-        div.onclick =
-            ()=>openChat(c.user.name);
-
-        div.oncontextmenu =
-            e=>{
-                e.preventDefault();
-                togglePin(c.user.name);
-            };
-
-        list.appendChild(div);
-
-    });
+});
 
 }
 
 
-/* PIN */
+/* CONTACTS */
 
-function togglePin(username){
+function renderContacts(){
 
-    const users = getUsers();
+const list =
+document.getElementById("contacts");
 
-    const user =
-        users.find(u=>u.name===username);
+const search =
+document.getElementById("searchInput")
+.value.trim().toLowerCase();
 
-    if(!user) return;
+const users =
+getUsers()
+.filter(u=>u.name!==currentUser)
+.filter(u=>
+u.name.toLowerCase()
+.includes(search)
+);
 
-    user.pinned =
-        !user.pinned;
+list.innerHTML = "";
 
-    saveUsers(users);
+if(users.length===0){
 
-    renderChats();
+list.innerHTML =
+`<div class="empty">
+مخاطبی پیدا نشد 👥
+</div>`;
+
+return;
+
+}
+
+users.forEach(user=>{
+
+const div =
+document.createElement("div");
+
+div.className =
+"contact-item";
+
+const online =
+user.online !== false;
+
+div.innerHTML = `
+
+<div class="avatar">
+
+${escapeHTML(user.avatar)}
+
+<span class="${
+online
+? "online-dot"
+: "offline-dot"
+}"></span>
+
+</div>
+
+<div class="info">
+
+<b>${escapeHTML(user.name)}</b>
+
+<span>
+${
+online
+? "● آنلاین"
+: "○ آفلاین"
+}
+</span>
+
+</div>
+
+`;
+
+div.onclick =
+()=>openChat(user.name);
+
+list.appendChild(div);
+
+});
 
 }
 
@@ -1058,28 +1413,41 @@ function togglePin(username){
 
 function openChat(username){
 
-    const user =
-        getUsers().find(
-            u=>u.name===username
-        );
+const user =
+getUsers().find(
+u=>u.name===username
+);
 
-    if(!user) return;
+if(!user) return;
 
-    currentChat = username;
+currentChat = username;
 
-    document.getElementById("home")
-        .style.display = "none";
+document.getElementById("home")
+.style.display = "none";
 
-    document.getElementById("chat")
-        .style.display = "flex";
+document.getElementById("chat")
+.style.display = "flex";
 
-    document.getElementById("chatName")
-        .textContent = user.name;
+document.getElementById("chatName")
+.textContent = user.name;
 
-    document.getElementById("chatAvatar")
-        .textContent = user.avatar;
+document.getElementById("chatAvatar")
+.firstChild.textContent =
+user.avatar;
 
-    loadMessages();
+document.getElementById("chatStatus")
+.textContent =
+user.online !== false
+? "● آنلاین"
+: "○ آفلاین";
+
+document.getElementById("chatStatus")
+.className =
+user.online !== false
+? "status-online"
+: "status-offline";
+
+loadMessages();
 
 }
 
@@ -1088,15 +1456,15 @@ function openChat(username){
 
 function closeChat(){
 
-    currentChat = null;
+currentChat = null;
 
-    document.getElementById("chat")
-        .style.display = "none";
+document.getElementById("chat")
+.style.display = "none";
 
-    document.getElementById("home")
-        .style.display = "block";
+document.getElementById("home")
+.style.display = "block";
 
-    renderChats();
+renderCurrentPage();
 
 }
 
@@ -1105,37 +1473,37 @@ function closeChat(){
 
 function loadMessages(){
 
-    const box =
-        document.getElementById("messages");
+const box =
+document.getElementById("messages");
 
-    const messages =
-        getChat(currentChat);
+const messages =
+getChat(currentChat);
 
-    box.innerHTML = "";
+box.innerHTML = "";
 
-    messages.forEach(msg=>{
+messages.forEach(msg=>{
 
-        const div =
-            document.createElement("div");
+const div =
+document.createElement("div");
 
-        div.className =
-            "msg " +
-            (msg.sender === currentUser
-                ? "me"
-                : "other");
+div.className =
+"msg " +
+(msg.sender===currentUser
+? "me"
+: "other");
 
-        div.innerHTML =
-            `${escapeHTML(msg.text)}
-             <span class="msg-time">
-                ${msg.time}
-             </span>`;
+div.innerHTML =
+`${escapeHTML(msg.text)}
+<span class="msg-time">
+${msg.time}
+</span>`;
 
-        box.appendChild(div);
+box.appendChild(div);
 
-    });
+});
 
-    box.scrollTop =
-        box.scrollHeight;
+box.scrollTop =
+box.scrollHeight;
 
 }
 
@@ -1144,52 +1512,52 @@ function loadMessages(){
 
 function sendMessage(){
 
-    const input =
-        document.getElementById("messageInput");
+const input =
+document.getElementById("messageInput");
 
-    const text =
-        input.value.trim();
+const text =
+input.value.trim();
 
-    if(!text || !currentChat)
-        return;
+if(!text || !currentChat)
+return;
 
-    const key =
-        chatKey(currentUser,currentChat);
+const key =
+chatKey(currentUser,currentChat);
 
-    const messages =
-        JSON.parse(
-            localStorage.getItem(key) || "[]"
-        );
+const messages =
+JSON.parse(
+localStorage.getItem(key)||"[]"
+);
 
-    const now =
-        new Date();
+const now =
+new Date();
 
-    messages.push({
+messages.push({
 
-        sender:currentUser,
+sender:currentUser,
 
-        text:text,
+text:text,
 
-        time:now.toLocaleTimeString(
-            "fa-IR",
-            {
-                hour:"2-digit",
-                minute:"2-digit"
-            }
-        ),
+time:now.toLocaleTimeString(
+"fa-IR",
+{
+hour:"2-digit",
+minute:"2-digit"
+}
+),
 
-        timestamp:Date.now()
+timestamp:Date.now()
 
-    });
+});
 
-    localStorage.setItem(
-        key,
-        JSON.stringify(messages)
-    );
+localStorage.setItem(
+key,
+JSON.stringify(messages)
+);
 
-    input.value = "";
+input.value = "";
 
-    loadMessages();
+loadMessages();
 
 }
 
@@ -1198,14 +1566,147 @@ function sendMessage(){
 
 function clearChat(){
 
-    if(!currentChat)
-        return;
+if(!currentChat)
+return;
 
-    localStorage.removeItem(
-        chatKey(currentUser,currentChat)
-    );
+localStorage.removeItem(
+chatKey(currentUser,currentChat)
+);
 
-    loadMessages();
+loadMessages();
+
+}
+
+
+/* PROFILE */
+
+function openProfile(){
+
+const user =
+getUsers().find(
+u=>u.name===currentUser
+);
+
+if(!user) return;
+
+selectedProfileAvatar =
+user.avatar;
+
+document.getElementById("profilePage")
+.style.display = "block";
+
+document.getElementById("profileBigAvatar")
+.textContent = user.avatar;
+
+document.getElementById("profilePageName")
+.textContent = user.name;
+
+document.getElementById("editName")
+.value = user.name;
+
+}
+
+
+function closeProfile(){
+
+document.getElementById("profilePage")
+.style.display = "none";
+
+}
+
+
+function chooseAvatar(button,avatar){
+
+selectedProfileAvatar = avatar;
+
+document.querySelectorAll(".avatar-choice")
+.forEach(x=>
+x.classList.remove("selected")
+);
+
+button.classList.add("selected");
+
+document.getElementById("profileBigAvatar")
+.textContent = avatar;
+
+}
+
+
+function saveProfile(){
+
+const newName =
+document.getElementById("editName")
+.value.trim();
+
+const error =
+document.getElementById("profileError");
+
+error.textContent = "";
+
+if(newName.length < 3){
+
+error.textContent =
+"نام کاربری حداقل ۳ کاراکتر باشد.";
+
+return;
+
+}
+
+const users = getUsers();
+
+const exists =
+users.some(
+u =>
+u.name.toLowerCase() ===
+newName.toLowerCase()
+&&
+u.name !== currentUser
+);
+
+if(exists){
+
+error.textContent =
+"این نام قبلاً استفاده شده.";
+
+return;
+
+}
+
+const user =
+users.find(
+u=>u.name===currentUser
+);
+
+if(!user) return;
+
+user.name = newName;
+
+user.avatar =
+selectedProfileAvatar;
+
+saveUsers(users);
+
+currentUser = newName;
+
+localStorage.setItem(
+"nebulaCurrentUser",
+newName
+);
+
+document.getElementById("myName")
+.textContent = newName;
+
+document.getElementById("myAvatar")
+.textContent = selectedProfileAvatar;
+
+document.getElementById("profilePageName")
+.textContent = newName;
+
+alert("پروفایل با موفقیت ذخیره شد ✅");
+
+closeProfile();
+
+renderCurrentPage();
 
 }
 
@@ -1214,29 +1715,16 @@ function clearChat(){
 
 function openSettings(){
 
-    const user =
-        getUsers().find(
-            u=>u.name===currentUser
-        );
-
-    if(!user) return;
-
-    document.getElementById("settings")
-        .style.display = "block";
-
-    document.getElementById("settingsName")
-        .textContent = user.name;
-
-    document.getElementById("settingsAvatar")
-        .textContent = user.avatar;
+document.getElementById("settings")
+.style.display = "block";
 
 }
 
 
 function closeSettings(){
 
-    document.getElementById("settings")
-        .style.display = "none";
+document.getElementById("settings")
+.style.display = "none";
 
 }
 
@@ -1245,23 +1733,41 @@ function closeSettings(){
 
 function logout(){
 
-    localStorage.removeItem(
-        "nebulaCurrentUser"
-    );
+const users = getUsers();
 
-    currentUser = null;
+const user =
+users.find(
+u=>u.name===currentUser
+);
 
-    document.getElementById("home")
-        .style.display = "none";
+if(user){
 
-    document.getElementById("chat")
-        .style.display = "none";
+user.online = false;
 
-    document.getElementById("settings")
-        .style.display = "none";
+saveUsers(users);
 
-    document.getElementById("auth")
-        .style.display = "flex";
+}
+
+localStorage.removeItem(
+"nebulaCurrentUser"
+);
+
+currentUser = null;
+
+document.getElementById("home")
+.style.display = "none";
+
+document.getElementById("chat")
+.style.display = "none";
+
+document.getElementById("profilePage")
+.style.display = "none";
+
+document.getElementById("settings")
+.style.display = "none";
+
+document.getElementById("auth")
+.style.display = "flex";
 
 }
 
@@ -1270,12 +1776,12 @@ function logout(){
 
 function escapeHTML(text){
 
-    const div =
-        document.createElement("div");
+const div =
+document.createElement("div");
 
-    div.textContent = text;
+div.textContent = text;
 
-    return div.innerHTML;
+return div.innerHTML;
 
 }
 
@@ -1284,29 +1790,41 @@ function escapeHTML(text){
 
 function createDemoUsers(){
 
-    const users = getUsers();
+const users = getUsers();
 
-    if(users.length === 0){
+if(users.length===0){
 
-        users.push({
-            name:"Nebula Bot",
-            avatar:"🤖",
-            passwordHash:"",
-            pinned:true,
-            createdAt:Date.now()
-        });
+users.push({
 
-        users.push({
-            name:"Test User",
-            avatar:"👾",
-            passwordHash:"",
-            pinned:false,
-            createdAt:Date.now()
-        });
+name:"Nebula Bot",
 
-        saveUsers(users);
+avatar:"🤖",
 
-    }
+passwordHash:"",
+
+online:true,
+
+createdAt:Date.now()
+
+});
+
+users.push({
+
+name:"Test User",
+
+avatar:"👾",
+
+passwordHash:"",
+
+online:false,
+
+createdAt:Date.now()
+
+});
+
+saveUsers(users);
+
+}
 
 }
 
@@ -1317,12 +1835,12 @@ createDemoUsers();
 
 if(currentUser){
 
-    showHome();
+showHome();
 
 }else{
 
-    document.getElementById("auth")
-        .style.display = "flex";
+document.getElementById("auth")
+.style.display = "flex";
 
 }
 
