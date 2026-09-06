@@ -2,8 +2,8 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nebula Messenger 0.6</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nebula Messenger 0.7</title>
 
 <style>
 *{
@@ -14,9 +14,8 @@
 }
 
 body{
-    background:#080b16;
-    color:#fff;
-    min-height:100vh;
+    background:#070a13;
+    color:white;
 }
 
 button,input{
@@ -29,26 +28,26 @@ button,input{
     min-height:100vh;
     margin:auto;
     background:#101525;
-    position:relative;
     overflow:hidden;
+    position:relative;
 }
 
-/* LOGIN */
+/* AUTH */
 
 .auth{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:25px;
 }
 
 .auth-box{
     width:100%;
     background:#151b2d;
-    border:1px solid #27304a;
-    border-radius:25px;
     padding:28px;
+    border-radius:25px;
+    border:1px solid #27304a;
     box-shadow:0 20px 60px #0008;
 }
 
@@ -61,23 +60,22 @@ button,input{
     width:75px;
     height:75px;
     margin:auto;
-    border-radius:22px;
     display:flex;
     align-items:center;
     justify-content:center;
+    border-radius:22px;
     font-size:38px;
     background:linear-gradient(135deg,#6c5ce7,#00cec9);
-    box-shadow:0 10px 35px #6c5ce755;
 }
 
 .logo h1{
     margin-top:12px;
-    font-size:27px;
+    font-size:26px;
 }
 
 .logo p{
-    color:#929bb5;
-    font-size:13px;
+    color:#818ba5;
+    font-size:12px;
     margin-top:6px;
 }
 
@@ -89,12 +87,11 @@ button,input{
 
 .tab{
     flex:1;
-    border:0;
     padding:12px;
+    border:0;
     border-radius:13px;
     background:#202840;
-    color:#aeb6ce;
-    cursor:pointer;
+    color:#aab3c9;
 }
 
 .tab.active{
@@ -108,7 +105,7 @@ button,input{
 
 .field label{
     display:block;
-    color:#aeb6ce;
+    color:#aab3c9;
     font-size:13px;
     margin-bottom:7px;
 }
@@ -116,15 +113,11 @@ button,input{
 .field input{
     width:100%;
     padding:14px;
-    border-radius:13px;
     border:1px solid #2b3551;
-    background:#0d1220;
+    border-radius:13px;
+    background:#0c111e;
     color:white;
     outline:none;
-}
-
-.field input:focus{
-    border-color:#6c5ce7;
 }
 
 .main-btn{
@@ -132,40 +125,17 @@ button,input{
     border:0;
     padding:14px;
     border-radius:14px;
-    background:linear-gradient(135deg,#6c5ce7,#574bce);
+    background:#6c5ce7;
     color:white;
     font-weight:bold;
     cursor:pointer;
-    margin-top:5px;
 }
 
 .error{
-    color:#ff7675;
-    font-size:13px;
-    margin:10px 0;
     min-height:18px;
-}
-
-.avatar-picker{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-top:8px;
-}
-
-.avatar{
-    width:43px;
-    height:43px;
-    border:2px solid transparent;
-    border-radius:13px;
-    background:#202840;
-    font-size:22px;
-    cursor:pointer;
-}
-
-.avatar.selected{
-    border-color:#6c5ce7;
-    background:#302b62;
+    color:#ff7675;
+    font-size:12px;
+    margin:8px 0;
 }
 
 /* HOME */
@@ -176,51 +146,51 @@ button,input{
 }
 
 .header{
-    padding:20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding:18px;
     border-bottom:1px solid #202840;
 }
 
 .header h2{
-    font-size:20px;
+    font-size:21px;
 }
 
 .header small{
-    color:#7f8aa5;
+    color:#707b96;
 }
 
 .icon-btn{
-    border:0;
     width:40px;
     height:40px;
+    border:0;
     border-radius:13px;
     background:#202840;
     color:white;
-    font-size:19px;
+    font-size:18px;
     cursor:pointer;
 }
 
 .profile{
-    margin:16px;
-    padding:15px;
+    margin:15px;
+    padding:14px;
     border-radius:18px;
-    background:linear-gradient(135deg,#1b2340,#151b2d);
     display:flex;
     align-items:center;
     gap:12px;
+    background:linear-gradient(135deg,#1c2440,#151b2d);
 }
 
 .profile-avatar{
-    width:52px;
-    height:52px;
+    width:50px;
+    height:50px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#292f49;
-    border-radius:16px;
-    font-size:27px;
+    border-radius:15px;
+    background:#282f49;
+    font-size:25px;
 }
 
 .profile-info{
@@ -232,70 +202,116 @@ button,input{
 }
 
 .profile-info span{
-    color:#7f8aa5;
-    font-size:12px;
+    color:#707b96;
+    font-size:11px;
 }
 
 .search{
-    padding:0 16px 15px;
+    padding:0 15px 12px;
 }
 
 .search input{
     width:100%;
-    padding:13px 15px;
-    border-radius:14px;
+    padding:13px;
     border:1px solid #252e47;
-    background:#0d1220;
+    border-radius:14px;
+    background:#0c111e;
     color:white;
     outline:none;
 }
 
-.users{
-    padding:0 10px 20px;
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 18px;
+    color:#737e98;
+    font-size:12px;
 }
 
-.user{
+.chat-list{
+    padding:0 9px 20px;
+}
+
+.chat-item{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:13px 10px;
-    border-radius:15px;
+    gap:11px;
+    padding:13px 9px;
+    border-radius:16px;
     cursor:pointer;
 }
 
-.user:hover{
+.chat-item:hover{
     background:#1b2235;
 }
 
-.user-avatar{
-    width:48px;
-    height:48px;
-    border-radius:15px;
+.chat-avatar{
+    width:50px;
+    height:50px;
+    flex-shrink:0;
+    border-radius:16px;
     background:#252d47;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:24px;
+    font-size:25px;
+    position:relative;
 }
 
-.user-info{
-    flex:1;
-}
-
-.user-info b{
-    display:block;
-}
-
-.user-info span{
-    color:#77829d;
+.pin{
+    position:absolute;
+    bottom:-3px;
+    left:-3px;
     font-size:12px;
 }
 
-.online{
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:#00cec9;
+.chat-info{
+    flex:1;
+    min-width:0;
+}
+
+.chat-top{
+    display:flex;
+    justify-content:space-between;
+    gap:5px;
+}
+
+.chat-top b{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.chat-time{
+    color:#68738d;
+    font-size:10px;
+}
+
+.last-message{
+    color:#737e98;
+    font-size:12px;
+    margin-top:5px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.unread{
+    min-width:20px;
+    height:20px;
+    padding:0 5px;
+    border-radius:20px;
+    background:#6c5ce7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+}
+
+.empty{
+    text-align:center;
+    color:#68738d;
+    padding:40px 20px;
 }
 
 /* CHAT */
@@ -307,29 +323,29 @@ button,input{
 }
 
 .chat-header{
-    padding:13px 15px;
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:10px;
+    padding:12px 14px;
     border-bottom:1px solid #202840;
 }
 
-.chat-header .back{
+.back{
     border:0;
     background:none;
     color:white;
-    font-size:25px;
+    font-size:27px;
     cursor:pointer;
 }
 
-.chat-user-avatar{
-    width:42px;
-    height:42px;
-    border-radius:13px;
-    background:#252d47;
+.chat-avatar-head{
+    width:43px;
+    height:43px;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:#252d47;
+    border-radius:13px;
     font-size:21px;
 }
 
@@ -343,7 +359,7 @@ button,input{
 
 .chat-title span{
     color:#00cec9;
-    font-size:11px;
+    font-size:10px;
 }
 
 .messages{
@@ -354,12 +370,11 @@ button,input{
 
 .msg{
     max-width:78%;
+    padding:9px 13px;
     margin-bottom:10px;
-    padding:10px 13px;
     border-radius:17px;
-    line-height:1.6;
     font-size:14px;
-    word-wrap:break-word;
+    line-height:1.6;
 }
 
 .msg.me{
@@ -378,7 +393,6 @@ button,input{
     display:block;
     font-size:9px;
     opacity:.6;
-    margin-top:3px;
 }
 
 .chat-input{
@@ -386,17 +400,16 @@ button,input{
     gap:8px;
     padding:12px;
     border-top:1px solid #202840;
-    background:#101525;
 }
 
 .chat-input input{
     flex:1;
-    border:0;
-    outline:none;
-    border-radius:14px;
     padding:13px;
+    border:0;
+    border-radius:14px;
     background:#202840;
     color:white;
+    outline:none;
 }
 
 .send{
@@ -405,8 +418,7 @@ button,input{
     border-radius:14px;
     background:#6c5ce7;
     color:white;
-    font-size:19px;
-    cursor:pointer;
+    font-size:18px;
 }
 
 /* SETTINGS */
@@ -415,8 +427,8 @@ button,input{
     display:none;
     position:absolute;
     inset:0;
+    z-index:20;
     background:#101525;
-    z-index:10;
 }
 
 .settings-header{
@@ -428,11 +440,10 @@ button,input{
 }
 
 .settings-header button{
-    background:none;
     border:0;
+    background:none;
     color:white;
-    font-size:25px;
-    cursor:pointer;
+    font-size:26px;
 }
 
 .settings-body{
@@ -444,10 +455,10 @@ button,input{
     height:90px;
     margin:10px auto 20px;
     border-radius:25px;
-    background:#252d47;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+    background:#252d47;
     font-size:45px;
 }
 
@@ -459,8 +470,8 @@ button,input{
 }
 
 .setting-card span{
-    color:#7f8aa5;
-    font-size:12px;
+    color:#707b96;
+    font-size:11px;
 }
 
 .danger{
@@ -468,16 +479,8 @@ button,input{
     padding:13px;
     border:0;
     border-radius:14px;
-    background:#3a2028;
+    background:#392129;
     color:#ff7675;
-    cursor:pointer;
-}
-
-.about{
-    text-align:center;
-    color:#66718c;
-    font-size:11px;
-    margin-top:25px;
 }
 </style>
 </head>
@@ -493,21 +496,21 @@ button,input{
 <div class="auth-box">
 
 <div class="logo">
-    <div class="logo-icon">☄️</div>
-    <h1>Nebula Messenger</h1>
-    <p>نسخه 0.6 • پیام‌رسان محلی</p>
+<div class="logo-icon">☄️</div>
+<h1>Nebula Messenger</h1>
+<p>نسخه 0.7 • Chat Edition</p>
 </div>
 
 <div class="tabs">
-    <button class="tab active" id="loginTab" onclick="switchAuth('login')">ورود</button>
-    <button class="tab" id="registerTab" onclick="switchAuth('register')">ثبت‌نام</button>
+<button class="tab active" id="loginTab" onclick="switchAuth('login')">ورود</button>
+<button class="tab" id="registerTab" onclick="switchAuth('register')">ثبت‌نام</button>
 </div>
 
 <div id="loginForm">
 
 <div class="field">
 <label>نام کاربری</label>
-<input id="loginUsername" placeholder="مثلاً Amir">
+<input id="loginUsername" placeholder="نام کاربری">
 </div>
 
 <div class="field">
@@ -517,41 +520,25 @@ button,input{
 
 <div class="error" id="loginError"></div>
 
-<button class="main-btn" onclick="login()">ورود به Nebula 🚀</button>
+<button class="main-btn" onclick="login()">ورود 🚀</button>
 
 </div>
-
 
 <div id="registerForm" style="display:none">
 
 <div class="field">
 <label>نام کاربری</label>
-<input id="registerUsername" placeholder="یک نام کاربری انتخاب کنید">
+<input id="registerUsername" placeholder="حداقل ۳ کاراکتر">
 </div>
 
 <div class="field">
 <label>رمز عبور</label>
-<input id="registerPassword" type="password" placeholder="حداقل 4 کاراکتر">
+<input id="registerPassword" type="password" placeholder="حداقل ۴ کاراکتر">
 </div>
 
 <div class="field">
 <label>تکرار رمز عبور</label>
-<input id="registerConfirm" type="password" placeholder="رمز را دوباره وارد کنید">
-</div>
-
-<div class="field">
-<label>انتخاب آواتار</label>
-
-<div class="avatar-picker">
-
-<button class="avatar selected" onclick="selectAvatar(this,'👨‍💻')">👨‍💻</button>
-<button class="avatar" onclick="selectAvatar(this,'😎')">😎</button>
-<button class="avatar" onclick="selectAvatar(this,'🚀')">🚀</button>
-<button class="avatar" onclick="selectAvatar(this,'👾')">👾</button>
-<button class="avatar" onclick="selectAvatar(this,'🤖')">🤖</button>
-<button class="avatar" onclick="selectAvatar(this,'🧑‍🚀')">🧑‍🚀</button>
-
-</div>
+<input id="registerConfirm" type="password">
 </div>
 
 <div class="error" id="registerError"></div>
@@ -571,12 +558,11 @@ button,input{
 <div class="header">
 <div>
 <h2>💬 Nebula</h2>
-<small>Messenger 0.6</small>
+<small>پیام‌رسان من</small>
 </div>
 
 <button class="icon-btn" onclick="openSettings()">⚙️</button>
 </div>
-
 
 <div class="profile">
 
@@ -584,17 +570,23 @@ button,input{
 
 <div class="profile-info">
 <b id="myName">---</b>
-<span>حساب من</span>
+<span>آنلاین</span>
 </div>
 
 </div>
-
 
 <div class="search">
-<input id="searchInput" placeholder="🔎 جستجوی کاربران..." oninput="renderUsers()">
+<input id="searchInput"
+placeholder="🔎 جستجوی چت..."
+oninput="renderChats()">
 </div>
 
-<div class="users" id="users"></div>
+<div class="section-title">
+<span>چت‌ها</span>
+<span id="chatCount">0</span>
+</div>
+
+<div class="chat-list" id="chatList"></div>
 
 </div>
 
@@ -607,7 +599,7 @@ button,input{
 
 <button class="back" onclick="closeChat()">‹</button>
 
-<div class="chat-user-avatar" id="chatAvatar">🤖</div>
+<div class="chat-avatar-head" id="chatAvatar">🤖</div>
 
 <div class="chat-title">
 <b id="chatName">---</b>
@@ -622,7 +614,9 @@ button,input{
 
 <div class="chat-input">
 
-<input id="messageInput" placeholder="پیام بنویس..." onkeydown="if(event.key==='Enter')sendMessage()">
+<input id="messageInput"
+placeholder="پیام بنویس..."
+onkeydown="if(event.key==='Enter')sendMessage()">
 
 <button class="send" onclick="sendMessage()">➤</button>
 
@@ -636,10 +630,8 @@ button,input{
 <div class="settings" id="settings">
 
 <div class="settings-header">
-
 <button onclick="closeSettings()">‹</button>
 <h2>تنظیمات</h2>
-
 </div>
 
 <div class="settings-body">
@@ -655,19 +647,14 @@ button,input{
 <div class="setting-card">
 <b>Nebula Messenger</b>
 <br>
-<span>نسخه 0.6 • Local Edition</span>
+<span>نسخه 0.7 • Chat Edition</span>
 </div>
 
-<button class="danger" onclick="logout()">🚪 خروج از حساب</button>
-
-<div class="about">
-ساخته شده برای پروژه Nebula Messenger 🚀
-<br>
-این نسخه بدون سرور کار می‌کند.
-</div>
+<button class="danger" onclick="logout()">
+🚪 خروج از حساب
+</button>
 
 </div>
-
 </div>
 
 </div>
@@ -675,71 +662,73 @@ button,input{
 
 <script>
 
-let currentUser = localStorage.getItem("nebulaCurrentUser");
-let selectedAvatar = "👨‍💻";
+let currentUser =
+localStorage.getItem("nebulaCurrentUser");
+
 let currentChat = null;
 
 
 /* USERS */
 
 function getUsers(){
-    return JSON.parse(localStorage.getItem("nebulaUsers") || "[]");
+
+    return JSON.parse(
+        localStorage.getItem("nebulaUsers") || "[]"
+    );
+
 }
 
 function saveUsers(users){
-    localStorage.setItem("nebulaUsers",JSON.stringify(users));
+
+    localStorage.setItem(
+        "nebulaUsers",
+        JSON.stringify(users)
+    );
+
 }
 
 
-/* PASSWORD HASH */
+/* HASH */
 
 async function hashPassword(password){
 
-    const data = new TextEncoder().encode(password);
+    const data =
+        new TextEncoder().encode(password);
 
-    const hash = await crypto.subtle.digest(
-        "SHA-256",
-        data
-    );
+    const hash =
+        await crypto.subtle.digest(
+            "SHA-256",
+            data
+        );
 
     return [...new Uint8Array(hash)]
         .map(x=>x.toString(16).padStart(2,"0"))
         .join("");
+
 }
 
 
-/* AUTH SWITCH */
+/* AUTH */
 
 function switchAuth(type){
 
-    const login = type === "login";
+    const login =
+        type === "login";
 
-    document.getElementById("loginForm").style.display =
+    document.getElementById("loginForm")
+        .style.display =
         login ? "block" : "none";
 
-    document.getElementById("registerForm").style.display =
+    document.getElementById("registerForm")
+        .style.display =
         login ? "none" : "block";
 
-    document.getElementById("loginTab").classList.toggle(
-        "active",login
-    );
+    document.getElementById("loginTab")
+        .classList.toggle("active",login);
 
-    document.getElementById("registerTab").classList.toggle(
-        "active",!login
-    );
-}
+    document.getElementById("registerTab")
+        .classList.toggle("active",!login);
 
-
-/* AVATAR */
-
-function selectAvatar(button,avatar){
-
-    selectedAvatar = avatar;
-
-    document.querySelectorAll(".avatar")
-        .forEach(x=>x.classList.remove("selected"));
-
-    button.classList.add("selected");
 }
 
 
@@ -748,13 +737,16 @@ function selectAvatar(button,avatar){
 async function register(){
 
     const username =
-        document.getElementById("registerUsername").value.trim();
+        document.getElementById("registerUsername")
+        .value.trim();
 
     const password =
-        document.getElementById("registerPassword").value;
+        document.getElementById("registerPassword")
+        .value;
 
     const confirm =
-        document.getElementById("registerConfirm").value;
+        document.getElementById("registerConfirm")
+        .value;
 
     const error =
         document.getElementById("registerError");
@@ -763,54 +755,53 @@ async function register(){
 
     if(username.length < 3){
         error.textContent =
-            "نام کاربری باید حداقل ۳ کاراکتر باشد.";
+            "نام کاربری خیلی کوتاه است.";
         return;
     }
 
     if(password.length < 4){
         error.textContent =
-            "رمز عبور باید حداقل ۴ کاراکتر باشد.";
+            "رمز عبور حداقل ۴ کاراکتر باشد.";
         return;
     }
 
     if(password !== confirm){
         error.textContent =
-            "رمزهای عبور یکسان نیستند.";
+            "رمزها یکسان نیستند.";
         return;
     }
 
     const users = getUsers();
 
-    const exists = users.some(
+    if(users.some(
         u => u.name.toLowerCase() === username.toLowerCase()
-    );
-
-    if(exists){
+    )){
         error.textContent =
-            "این نام کاربری قبلاً استفاده شده است.";
+            "این نام کاربری قبلاً ثبت شده.";
         return;
     }
 
-    const passwordHash =
+    const hash =
         await hashPassword(password);
 
     users.push({
         name:username,
-        avatar:selectedAvatar,
-        passwordHash:passwordHash,
+        avatar:"👨‍💻",
+        passwordHash:hash,
         createdAt:Date.now()
     });
 
     saveUsers(users);
+
+    currentUser = username;
 
     localStorage.setItem(
         "nebulaCurrentUser",
         username
     );
 
-    currentUser = username;
-
     showHome();
+
 }
 
 
@@ -819,21 +810,22 @@ async function register(){
 async function login(){
 
     const username =
-        document.getElementById("loginUsername").value.trim();
+        document.getElementById("loginUsername")
+        .value.trim();
 
     const password =
-        document.getElementById("loginPassword").value;
+        document.getElementById("loginPassword")
+        .value;
 
     const error =
         document.getElementById("loginError");
 
-    error.textContent = "";
-
-    const users = getUsers();
-
-    const user = users.find(
-        u => u.name.toLowerCase() === username.toLowerCase()
-    );
+    const user =
+        getUsers().find(
+            u =>
+            u.name.toLowerCase() ===
+            username.toLowerCase()
+        );
 
     if(!user){
         error.textContent =
@@ -850,14 +842,15 @@ async function login(){
         return;
     }
 
-    localStorage.setItem(
-        "nebulaCurrentUser",
-        user.name
-    );
-
     currentUser = user.name;
 
+    localStorage.setItem(
+        "nebulaCurrentUser",
+        currentUser
+    );
+
     showHome();
+
 }
 
 
@@ -865,78 +858,33 @@ async function login(){
 
 function showHome(){
 
-    document.getElementById("auth").style.display = "none";
-    document.getElementById("home").style.display = "block";
-    document.getElementById("chat").style.display = "none";
+    document.getElementById("auth")
+        .style.display = "none";
 
-    const user = getUsers().find(
-        u => u.name === currentUser
-    );
+    document.getElementById("home")
+        .style.display = "block";
+
+    document.getElementById("chat")
+        .style.display = "none";
+
+    const user =
+        getUsers().find(
+            u=>u.name === currentUser
+        );
 
     if(!user){
         logout();
         return;
     }
 
-    document.getElementById("myName").textContent =
-        user.name;
+    document.getElementById("myName")
+        .textContent = user.name;
 
-    document.getElementById("myAvatar").textContent =
-        user.avatar;
+    document.getElementById("myAvatar")
+        .textContent = user.avatar;
 
-    renderUsers();
-}
+    renderChats();
 
-
-/* USERS */
-
-function renderUsers(){
-
-    const container =
-        document.getElementById("users");
-
-    const search =
-        document.getElementById("searchInput").value
-        .trim()
-        .toLowerCase();
-
-    const users = getUsers()
-        .filter(u => u.name !== currentUser)
-        .filter(u => u.name.toLowerCase().includes(search));
-
-    container.innerHTML = "";
-
-    if(users.length === 0){
-
-        container.innerHTML =
-            `<div style="text-align:center;color:#69748e;padding:30px">
-                کاربری پیدا نشد 😕
-             </div>`;
-
-        return;
-    }
-
-    users.forEach(user=>{
-
-        const div = document.createElement("div");
-
-        div.className = "user";
-
-        div.innerHTML = `
-            <div class="user-avatar">${escapeHTML(user.avatar)}</div>
-
-            <div class="user-info">
-                <b>${escapeHTML(user.name)}</b>
-                <span>شروع گفت‌وگوی خصوصی</span>
-            </div>
-
-            <div class="online"></div>
-        `;
-
-        div.onclick = () => openChat(user.name);
-
-        container.appendChild(div);
-    });
 }
 
 
@@ -945,9 +893,164 @@ function renderUsers(){
 function chatKey(a,b){
 
     return "nebula_chat_" +
-        [a,b]
-        .sort()
-        .join("_");
+        [a,b].sort().join("_");
+
+}
+
+
+/* CHAT DATA */
+
+function getChat(user){
+
+    return JSON.parse(
+        localStorage.getItem(
+            chatKey(currentUser,user)
+        ) || "[]"
+    );
+
+}
+
+
+/* RENDER CHATS */
+
+function renderChats(){
+
+    const list =
+        document.getElementById("chatList");
+
+    const search =
+        document.getElementById("searchInput")
+        .value.trim().toLowerCase();
+
+    const users =
+        getUsers().filter(
+            u => u.name !== currentUser
+        );
+
+    let chats = users.map(user=>{
+
+        const messages =
+            getChat(user.name);
+
+        const last =
+            messages[messages.length-1];
+
+        return {
+            user:user,
+            last:last,
+            count:messages.length
+        };
+
+    });
+
+    chats = chats.filter(c=>
+        c.user.name.toLowerCase()
+        .includes(search)
+    );
+
+    chats.sort((a,b)=>{
+
+        if(a.user.pinned && !b.user.pinned)
+            return -1;
+
+        if(!a.user.pinned && b.user.pinned)
+            return 1;
+
+        return (b.last?.timestamp || 0) -
+               (a.last?.timestamp || 0);
+
+    });
+
+    document.getElementById("chatCount")
+        .textContent = chats.length;
+
+    list.innerHTML = "";
+
+    if(chats.length === 0){
+
+        list.innerHTML =
+            `<div class="empty">
+                هنوز چتی وجود ندارد 💬
+                <br>
+                از نسخه بعدی می‌توانیم مخاطب اضافه کنیم!
+            </div>`;
+
+        return;
+    }
+
+    chats.forEach(c=>{
+
+        const div =
+            document.createElement("div");
+
+        div.className = "chat-item";
+
+        let lastText =
+            c.last
+            ? c.last.text
+            : "شروع گفت‌وگو...";
+
+        let time =
+            c.last
+            ? c.last.time
+            : "";
+
+        div.innerHTML = `
+
+        <div class="chat-avatar">
+            ${escapeHTML(c.user.avatar)}
+            ${c.user.pinned ? '<span class="pin">📌</span>' : ''}
+        </div>
+
+        <div class="chat-info">
+
+            <div class="chat-top">
+                <b>${escapeHTML(c.user.name)}</b>
+                <span class="chat-time">${time}</span>
+            </div>
+
+            <div class="last-message">
+                ${escapeHTML(lastText)}
+            </div>
+
+        </div>
+
+        `;
+
+        div.onclick =
+            ()=>openChat(c.user.name);
+
+        div.oncontextmenu =
+            e=>{
+                e.preventDefault();
+                togglePin(c.user.name);
+            };
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+/* PIN */
+
+function togglePin(username){
+
+    const users = getUsers();
+
+    const user =
+        users.find(u=>u.name===username);
+
+    if(!user) return;
+
+    user.pinned =
+        !user.pinned;
+
+    saveUsers(users);
+
+    renderChats();
+
 }
 
 
@@ -956,26 +1059,28 @@ function chatKey(a,b){
 function openChat(username){
 
     const user =
-        getUsers().find(u=>u.name === username);
+        getUsers().find(
+            u=>u.name===username
+        );
 
     if(!user) return;
 
     currentChat = username;
 
-    document.getElementById("home").style.display = "none";
+    document.getElementById("home")
+        .style.display = "none";
 
-    const chat =
-        document.getElementById("chat");
+    document.getElementById("chat")
+        .style.display = "flex";
 
-    chat.style.display = "flex";
+    document.getElementById("chatName")
+        .textContent = user.name;
 
-    document.getElementById("chatName").textContent =
-        user.name;
-
-    document.getElementById("chatAvatar").textContent =
-        user.avatar;
+    document.getElementById("chatAvatar")
+        .textContent = user.avatar;
 
     loadMessages();
+
 }
 
 
@@ -985,28 +1090,26 @@ function closeChat(){
 
     currentChat = null;
 
-    document.getElementById("chat").style.display =
-        "none";
+    document.getElementById("chat")
+        .style.display = "none";
 
-    document.getElementById("home").style.display =
-        "block";
+    document.getElementById("home")
+        .style.display = "block";
 
-    renderUsers();
+    renderChats();
+
 }
 
 
-/* LOAD MESSAGES */
+/* LOAD */
 
 function loadMessages(){
 
-    const key =
-        chatKey(currentUser,currentChat);
-
-    const messages =
-        JSON.parse(localStorage.getItem(key) || "[]");
-
     const box =
         document.getElementById("messages");
+
+    const messages =
+        getChat(currentChat);
 
     box.innerHTML = "";
 
@@ -1021,15 +1124,19 @@ function loadMessages(){
                 ? "me"
                 : "other");
 
-        div.innerHTML = `
-            ${escapeHTML(msg.text)}
-            <span class="msg-time">${msg.time}</span>
-        `;
+        div.innerHTML =
+            `${escapeHTML(msg.text)}
+             <span class="msg-time">
+                ${msg.time}
+             </span>`;
 
         box.appendChild(div);
+
     });
 
-    box.scrollTop = box.scrollHeight;
+    box.scrollTop =
+        box.scrollHeight;
+
 }
 
 
@@ -1043,27 +1150,36 @@ function sendMessage(){
     const text =
         input.value.trim();
 
-    if(!text || !currentChat) return;
+    if(!text || !currentChat)
+        return;
 
     const key =
         chatKey(currentUser,currentChat);
 
     const messages =
-        JSON.parse(localStorage.getItem(key) || "[]");
+        JSON.parse(
+            localStorage.getItem(key) || "[]"
+        );
 
     const now =
         new Date();
 
-    const time =
-        now.toLocaleTimeString("fa-IR",{
-            hour:"2-digit",
-            minute:"2-digit"
-        });
-
     messages.push({
+
         sender:currentUser,
+
         text:text,
-        time:time
+
+        time:now.toLocaleTimeString(
+            "fa-IR",
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        ),
+
+        timestamp:Date.now()
+
     });
 
     localStorage.setItem(
@@ -1074,20 +1190,23 @@ function sendMessage(){
     input.value = "";
 
     loadMessages();
+
 }
 
 
-/* CLEAR CHAT */
+/* CLEAR */
 
 function clearChat(){
 
-    if(!currentChat) return;
+    if(!currentChat)
+        return;
 
     localStorage.removeItem(
         chatKey(currentUser,currentChat)
     );
 
     loadMessages();
+
 }
 
 
@@ -1097,26 +1216,28 @@ function openSettings(){
 
     const user =
         getUsers().find(
-            u=>u.name === currentUser
+            u=>u.name===currentUser
         );
 
     if(!user) return;
 
-    document.getElementById("settings").style.display =
-        "block";
+    document.getElementById("settings")
+        .style.display = "block";
 
-    document.getElementById("settingsName").textContent =
-        user.name;
+    document.getElementById("settingsName")
+        .textContent = user.name;
 
-    document.getElementById("settingsAvatar").textContent =
-        user.avatar;
+    document.getElementById("settingsAvatar")
+        .textContent = user.avatar;
+
 }
 
 
 function closeSettings(){
 
-    document.getElementById("settings").style.display =
-        "none";
+    document.getElementById("settings")
+        .style.display = "none";
+
 }
 
 
@@ -1124,27 +1245,28 @@ function closeSettings(){
 
 function logout(){
 
-    localStorage.removeItem("nebulaCurrentUser");
+    localStorage.removeItem(
+        "nebulaCurrentUser"
+    );
 
     currentUser = null;
 
-    document.getElementById("home").style.display =
-        "none";
+    document.getElementById("home")
+        .style.display = "none";
 
-    document.getElementById("chat").style.display =
-        "none";
+    document.getElementById("chat")
+        .style.display = "none";
 
-    document.getElementById("settings").style.display =
-        "none";
+    document.getElementById("settings")
+        .style.display = "none";
 
-    document.getElementById("auth").style.display =
-        "flex";
+    document.getElementById("auth")
+        .style.display = "flex";
 
-    document.getElementById("loginPassword").value = "";
 }
 
 
-/* ESCAPE HTML */
+/* ESCAPE */
 
 function escapeHTML(text){
 
@@ -1154,6 +1276,7 @@ function escapeHTML(text){
     div.textContent = text;
 
     return div.innerHTML;
+
 }
 
 
@@ -1169,6 +1292,7 @@ function createDemoUsers(){
             name:"Nebula Bot",
             avatar:"🤖",
             passwordHash:"",
+            pinned:true,
             createdAt:Date.now()
         });
 
@@ -1176,11 +1300,14 @@ function createDemoUsers(){
             name:"Test User",
             avatar:"👾",
             passwordHash:"",
+            pinned:false,
             createdAt:Date.now()
         });
 
         saveUsers(users);
+
     }
+
 }
 
 
@@ -1194,11 +1321,12 @@ if(currentUser){
 
 }else{
 
-    document.getElementById("auth").style.display =
-        "flex";
+    document.getElementById("auth")
+        .style.display = "flex";
+
 }
 
 </script>
 
 </body>
-  </html>
+</html>
