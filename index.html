@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebula Messenger 0.6</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:#080b16;
+    color:#fff;
+    min-height:100vh;
+}
+
+button,input{
+    font-family:inherit;
+}
+
+.app{
+    width:100%;
+    max-width:520px;
+    min-height:100vh;
+    margin:auto;
+    background:#101525;
+    position:relative;
+    overflow:hidden;
+}
+
+/* LOGIN */
+
+.auth{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+}
+
+.auth-box{
+    width:100%;
+    background:#151b2d;
+    border:1px solid #27304a;
+    border-radius:25px;
+    padding:28px;
+    box-shadow:0 20px 60px #0008;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo-icon{
+    width:75px;
+    height:75px;
+    margin:auto;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+    background:linear-gradient(135deg,#6c5ce7,#00cec9);
+    box-shadow:0 10px 35px #6c5ce755;
+}
+
+.logo h1{
+    margin-top:12px;
+    font-size:27px;
+}
+
+.logo p{
+    color:#929bb5;
+    font-size:13px;
+    margin-top:6px;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.tab{
+    flex:1;
+    border:0;
+    padding:12px;
+    border-radius:13px;
+    background:#202840;
+    color:#aeb6ce;
+    cursor:pointer;
+}
+
+.tab.active{
+    background:#6c5ce7;
+    color:white;
+}
+
+.field{
+    margin-bottom:13px;
+}
+
+.field label{
+    display:block;
+    color:#aeb6ce;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+.field input{
+    width:100%;
+    padding:14px;
+    border-radius:13px;
+    border:1px solid #2b3551;
+    background:#0d1220;
+    color:white;
+    outline:none;
+}
+
+.field input:focus{
+    border-color:#6c5ce7;
+}
+
+.main-btn{
+    width:100%;
+    border:0;
+    padding:14px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#6c5ce7,#574bce);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+.error{
+    color:#ff7675;
+    font-size:13px;
+    margin:10px 0;
+    min-height:18px;
+}
+
+.avatar-picker{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:8px;
+}
+
+.avatar{
+    width:43px;
+    height:43px;
+    border:2px solid transparent;
+    border-radius:13px;
+    background:#202840;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.avatar.selected{
+    border-color:#6c5ce7;
+    background:#302b62;
+}
+
+/* HOME */
+
+.home{
+    display:none;
+    min-height:100vh;
+}
+
+.header{
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #202840;
+}
+
+.header h2{
+    font-size:20px;
+}
+
+.header small{
+    color:#7f8aa5;
+}
+
+.icon-btn{
+    border:0;
+    width:40px;
+    height:40px;
+    border-radius:13px;
+    background:#202840;
+    color:white;
+    font-size:19px;
+    cursor:pointer;
+}
+
+.profile{
+    margin:16px;
+    padding:15px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#1b2340,#151b2d);
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.profile-avatar{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#292f49;
+    border-radius:16px;
+    font-size:27px;
+}
+
+.profile-info{
+    flex:1;
+}
+
+.profile-info b{
+    display:block;
+}
+
+.profile-info span{
+    color:#7f8aa5;
+    font-size:12px;
+}
+
+.search{
+    padding:0 16px 15px;
+}
+
+.search input{
+    width:100%;
+    padding:13px 15px;
+    border-radius:14px;
+    border:1px solid #252e47;
+    background:#0d1220;
+    color:white;
+    outline:none;
+}
+
+.users{
+    padding:0 10px 20px;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:13px 10px;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.user:hover{
+    background:#1b2235;
+}
+
+.user-avatar{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    background:#252d47;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+
+.user-info{
+    flex:1;
+}
+
+.user-info b{
+    display:block;
+}
+
+.user-info span{
+    color:#77829d;
+    font-size:12px;
+}
+
+.online{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#00cec9;
+}
+
+/* CHAT */
+
+.chat{
+    display:none;
+    height:100vh;
+    flex-direction:column;
+}
+
+.chat-header{
+    padding:13px 15px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-bottom:1px solid #202840;
+}
+
+.chat-header .back{
+    border:0;
+    background:none;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.chat-user-avatar{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    background:#252d47;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.chat-title{
+    flex:1;
+}
+
+.chat-title b{
+    display:block;
+}
+
+.chat-title span{
+    color:#00cec9;
+    font-size:11px;
+}
+
+.messages{
+    flex:1;
+    overflow-y:auto;
+    padding:18px 13px;
+}
+
+.msg{
+    max-width:78%;
+    margin-bottom:10px;
+    padding:10px 13px;
+    border-radius:17px;
+    line-height:1.6;
+    font-size:14px;
+    word-wrap:break-word;
+}
+
+.msg.me{
+    margin-right:auto;
+    background:#6355d9;
+    border-bottom-right-radius:5px;
+}
+
+.msg.other{
+    margin-left:auto;
+    background:#202840;
+    border-bottom-left-radius:5px;
+}
+
+.msg-time{
+    display:block;
+    font-size:9px;
+    opacity:.6;
+    margin-top:3px;
+}
+
+.chat-input{
+    display:flex;
+    gap:8px;
+    padding:12px;
+    border-top:1px solid #202840;
+    background:#101525;
+}
+
+.chat-input input{
+    flex:1;
+    border:0;
+    outline:none;
+    border-radius:14px;
+    padding:13px;
+    background:#202840;
+    color:white;
+}
+
+.send{
+    width:48px;
+    border:0;
+    border-radius:14px;
+    background:#6c5ce7;
+    color:white;
+    font-size:19px;
+    cursor:pointer;
+}
+
+/* SETTINGS */
+
+.settings{
+    display:none;
+    position:absolute;
+    inset:0;
+    background:#101525;
+    z-index:10;
+}
+
+.settings-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:18px;
+    border-bottom:1px solid #202840;
+}
+
+.settings-header button{
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.settings-body{
+    padding:20px;
+}
+
+.big-avatar{
+    width:90px;
+    height:90px;
+    margin:10px auto 20px;
+    border-radius:25px;
+    background:#252d47;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:45px;
+}
+
+.setting-card{
+    background:#181f32;
+    padding:16px;
+    border-radius:16px;
+    margin-bottom:12px;
+}
+
+.setting-card span{
+    color:#7f8aa5;
+    font-size:12px;
+}
+
+.danger{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:14px;
+    background:#3a2028;
+    color:#ff7675;
+    cursor:pointer;
+}
+
+.about{
+    text-align:center;
+    color:#66718c;
+    font-size:11px;
+    margin-top:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- AUTH -->
+
+<div class="auth" id="auth">
+
+<div class="auth-box">
+
+<div class="logo">
+    <div class="logo-icon">☄️</div>
+    <h1>Nebula Messenger</h1>
+    <p>نسخه 0.6 • پیام‌رسان محلی</p>
+</div>
+
+<div class="tabs">
+    <button class="tab active" id="loginTab" onclick="switchAuth('login')">ورود</button>
+    <button class="tab" id="registerTab" onclick="switchAuth('register')">ثبت‌نام</button>
+</div>
+
+<div id="loginForm">
+
+<div class="field">
+<label>نام کاربری</label>
+<input id="loginUsername" placeholder="مثلاً Amir">
+</div>
+
+<div class="field">
+<label>رمز عبور</label>
+<input id="loginPassword" type="password" placeholder="رمز عبور">
+</div>
+
+<div class="error" id="loginError"></div>
+
+<button class="main-btn" onclick="login()">ورود به Nebula 🚀</button>
+
+</div>
+
+
+<div id="registerForm" style="display:none">
+
+<div class="field">
+<label>نام کاربری</label>
+<input id="registerUsername" placeholder="یک نام کاربری انتخاب کنید">
+</div>
+
+<div class="field">
+<label>رمز عبور</label>
+<input id="registerPassword" type="password" placeholder="حداقل 4 کاراکتر">
+</div>
+
+<div class="field">
+<label>تکرار رمز عبور</label>
+<input id="registerConfirm" type="password" placeholder="رمز را دوباره وارد کنید">
+</div>
+
+<div class="field">
+<label>انتخاب آواتار</label>
+
+<div class="avatar-picker">
+
+<button class="avatar selected" onclick="selectAvatar(this,'👨‍💻')">👨‍💻</button>
+<button class="avatar" onclick="selectAvatar(this,'😎')">😎</button>
+<button class="avatar" onclick="selectAvatar(this,'🚀')">🚀</button>
+<button class="avatar" onclick="selectAvatar(this,'👾')">👾</button>
+<button class="avatar" onclick="selectAvatar(this,'🤖')">🤖</button>
+<button class="avatar" onclick="selectAvatar(this,'🧑‍🚀')">🧑‍🚀</button>
+
+</div>
+</div>
+
+<div class="error" id="registerError"></div>
+
+<button class="main-btn" onclick="register()">ساخت حساب ✨</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- HOME -->
+
+<div class="home" id="home">
+
+<div class="header">
+<div>
+<h2>💬 Nebula</h2>
+<small>Messenger 0.6</small>
+</div>
+
+<button class="icon-btn" onclick="openSettings()">⚙️</button>
+</div>
+
+
+<div class="profile">
+
+<div class="profile-avatar" id="myAvatar">👨‍💻</div>
+
+<div class="profile-info">
+<b id="myName">---</b>
+<span>حساب من</span>
+</div>
+
+</div>
+
+
+<div class="search">
+<input id="searchInput" placeholder="🔎 جستجوی کاربران..." oninput="renderUsers()">
+</div>
+
+<div class="users" id="users"></div>
+
+</div>
+
+
+<!-- CHAT -->
+
+<div class="chat" id="chat">
+
+<div class="chat-header">
+
+<button class="back" onclick="closeChat()">‹</button>
+
+<div class="chat-user-avatar" id="chatAvatar">🤖</div>
+
+<div class="chat-title">
+<b id="chatName">---</b>
+<span>● آنلاین</span>
+</div>
+
+<button class="icon-btn" onclick="clearChat()">🗑️</button>
+
+</div>
+
+<div class="messages" id="messages"></div>
+
+<div class="chat-input">
+
+<input id="messageInput" placeholder="پیام بنویس..." onkeydown="if(event.key==='Enter')sendMessage()">
+
+<button class="send" onclick="sendMessage()">➤</button>
+
+</div>
+
+</div>
+
+
+<!-- SETTINGS -->
+
+<div class="settings" id="settings">
+
+<div class="settings-header">
+
+<button onclick="closeSettings()">‹</button>
+<h2>تنظیمات</h2>
+
+</div>
+
+<div class="settings-body">
+
+<div class="big-avatar" id="settingsAvatar">👨‍💻</div>
+
+<div class="setting-card">
+<b id="settingsName">---</b>
+<br>
+<span>نام کاربری</span>
+</div>
+
+<div class="setting-card">
+<b>Nebula Messenger</b>
+<br>
+<span>نسخه 0.6 • Local Edition</span>
+</div>
+
+<button class="danger" onclick="logout()">🚪 خروج از حساب</button>
+
+<div class="about">
+ساخته شده برای پروژه Nebula Messenger 🚀
+<br>
+این نسخه بدون سرور کار می‌کند.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let currentUser = localStorage.getItem("nebulaCurrentUser");
+let selectedAvatar = "👨‍💻";
+let currentChat = null;
+
+
+/* USERS */
+
+function getUsers(){
+    return JSON.parse(localStorage.getItem("nebulaUsers") || "[]");
+}
+
+function saveUsers(users){
+    localStorage.setItem("nebulaUsers",JSON.stringify(users));
+}
+
+
+/* PASSWORD HASH */
+
+async function hashPassword(password){
+
+    const data = new TextEncoder().encode(password);
+
+    const hash = await crypto.subtle.digest(
+        "SHA-256",
+        data
+    );
+
+    return [...new Uint8Array(hash)]
+        .map(x=>x.toString(16).padStart(2,"0"))
+        .join("");
+}
+
+
+/* AUTH SWITCH */
+
+function switchAuth(type){
+
+    const login = type === "login";
+
+    document.getElementById("loginForm").style.display =
+        login ? "block" : "none";
+
+    document.getElementById("registerForm").style.display =
+        login ? "none" : "block";
+
+    document.getElementById("loginTab").classList.toggle(
+        "active",login
+    );
+
+    document.getElementById("registerTab").classList.toggle(
+        "active",!login
+    );
+}
+
+
+/* AVATAR */
+
+function selectAvatar(button,avatar){
+
+    selectedAvatar = avatar;
+
+    document.querySelectorAll(".avatar")
+        .forEach(x=>x.classList.remove("selected"));
+
+    button.classList.add("selected");
+}
+
+
+/* REGISTER */
+
+async function register(){
+
+    const username =
+        document.getElementById("registerUsername").value.trim();
+
+    const password =
+        document.getElementById("registerPassword").value;
+
+    const confirm =
+        document.getElementById("registerConfirm").value;
+
+    const error =
+        document.getElementById("registerError");
+
+    error.textContent = "";
+
+    if(username.length < 3){
+        error.textContent =
+            "نام کاربری باید حداقل ۳ کاراکتر باشد.";
+        return;
+    }
+
+    if(password.length < 4){
+        error.textContent =
+            "رمز عبور باید حداقل ۴ کاراکتر باشد.";
+        return;
+    }
+
+    if(password !== confirm){
+        error.textContent =
+            "رمزهای عبور یکسان نیستند.";
+        return;
+    }
+
+    const users = getUsers();
+
+    const exists = users.some(
+        u => u.name.toLowerCase() === username.toLowerCase()
+    );
+
+    if(exists){
+        error.textContent =
+            "این نام کاربری قبلاً استفاده شده است.";
+        return;
+    }
+
+    const passwordHash =
+        await hashPassword(password);
+
+    users.push({
+        name:username,
+        avatar:selectedAvatar,
+        passwordHash:passwordHash,
+        createdAt:Date.now()
+    });
+
+    saveUsers(users);
+
+    localStorage.setItem(
+        "nebulaCurrentUser",
+        username
+    );
+
+    currentUser = username;
+
+    showHome();
+}
+
+
+/* LOGIN */
+
+async function login(){
+
+    const username =
+        document.getElementById("loginUsername").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const error =
+        document.getElementById("loginError");
+
+    error.textContent = "";
+
+    const users = getUsers();
+
+    const user = users.find(
+        u => u.name.toLowerCase() === username.toLowerCase()
+    );
+
+    if(!user){
+        error.textContent =
+            "نام کاربری یا رمز عبور اشتباه است.";
+        return;
+    }
+
+    const hash =
+        await hashPassword(password);
+
+    if(hash !== user.passwordHash){
+        error.textContent =
+            "نام کاربری یا رمز عبور اشتباه است.";
+        return;
+    }
+
+    localStorage.setItem(
+        "nebulaCurrentUser",
+        user.name
+    );
+
+    currentUser = user.name;
+
+    showHome();
+}
+
+
+/* HOME */
+
+function showHome(){
+
+    document.getElementById("auth").style.display = "none";
+    document.getElementById("home").style.display = "block";
+    document.getElementById("chat").style.display = "none";
+
+    const user = getUsers().find(
+        u => u.name === currentUser
+    );
+
+    if(!user){
+        logout();
+        return;
+    }
+
+    document.getElementById("myName").textContent =
+        user.name;
+
+    document.getElementById("myAvatar").textContent =
+        user.avatar;
+
+    renderUsers();
+}
+
+
+/* USERS */
+
+function renderUsers(){
+
+    const container =
+        document.getElementById("users");
+
+    const search =
+        document.getElementById("searchInput").value
+        .trim()
+        .toLowerCase();
+
+    const users = getUsers()
+        .filter(u => u.name !== currentUser)
+        .filter(u => u.name.toLowerCase().includes(search));
+
+    container.innerHTML = "";
+
+    if(users.length === 0){
+
+        container.innerHTML =
+            `<div style="text-align:center;color:#69748e;padding:30px">
+                کاربری پیدا نشد 😕
+             </div>`;
+
+        return;
+    }
+
+    users.forEach(user=>{
+
+        const div = document.createElement("div");
+
+        div.className = "user";
+
+        div.innerHTML = `
+            <div class="user-avatar">${escapeHTML(user.avatar)}</div>
+
+            <div class="user-info">
+                <b>${escapeHTML(user.name)}</b>
+                <span>شروع گفت‌وگوی خصوصی</span>
+            </div>
+
+            <div class="online"></div>
+        `;
+
+        div.onclick = () => openChat(user.name);
+
+        container.appendChild(div);
+    });
+}
+
+
+/* CHAT KEY */
+
+function chatKey(a,b){
+
+    return "nebula_chat_" +
+        [a,b]
+        .sort()
+        .join("_");
+}
+
+
+/* OPEN CHAT */
+
+function openChat(username){
+
+    const user =
+        getUsers().find(u=>u.name === username);
+
+    if(!user) return;
+
+    currentChat = username;
+
+    document.getElementById("home").style.display = "none";
+
+    const chat =
+        document.getElementById("chat");
+
+    chat.style.display = "flex";
+
+    document.getElementById("chatName").textContent =
+        user.name;
+
+    document.getElementById("chatAvatar").textContent =
+        user.avatar;
+
+    loadMessages();
+}
+
+
+/* CLOSE CHAT */
+
+function closeChat(){
+
+    currentChat = null;
+
+    document.getElementById("chat").style.display =
+        "none";
+
+    document.getElementById("home").style.display =
+        "block";
+
+    renderUsers();
+}
+
+
+/* LOAD MESSAGES */
+
+function loadMessages(){
+
+    const key =
+        chatKey(currentUser,currentChat);
+
+    const messages =
+        JSON.parse(localStorage.getItem(key) || "[]");
+
+    const box =
+        document.getElementById("messages");
+
+    box.innerHTML = "";
+
+    messages.forEach(msg=>{
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "msg " +
+            (msg.sender === currentUser
+                ? "me"
+                : "other");
+
+        div.innerHTML = `
+            ${escapeHTML(msg.text)}
+            <span class="msg-time">${msg.time}</span>
+        `;
+
+        box.appendChild(div);
+    });
+
+    box.scrollTop = box.scrollHeight;
+}
+
+
+/* SEND */
+
+function sendMessage(){
+
+    const input =
+        document.getElementById("messageInput");
+
+    const text =
+        input.value.trim();
+
+    if(!text || !currentChat) return;
+
+    const key =
+        chatKey(currentUser,currentChat);
+
+    const messages =
+        JSON.parse(localStorage.getItem(key) || "[]");
+
+    const now =
+        new Date();
+
+    const time =
+        now.toLocaleTimeString("fa-IR",{
+            hour:"2-digit",
+            minute:"2-digit"
+        });
+
+    messages.push({
+        sender:currentUser,
+        text:text,
+        time:time
+    });
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(messages)
+    );
+
+    input.value = "";
+
+    loadMessages();
+}
+
+
+/* CLEAR CHAT */
+
+function clearChat(){
+
+    if(!currentChat) return;
+
+    localStorage.removeItem(
+        chatKey(currentUser,currentChat)
+    );
+
+    loadMessages();
+}
+
+
+/* SETTINGS */
+
+function openSettings(){
+
+    const user =
+        getUsers().find(
+            u=>u.name === currentUser
+        );
+
+    if(!user) return;
+
+    document.getElementById("settings").style.display =
+        "block";
+
+    document.getElementById("settingsName").textContent =
+        user.name;
+
+    document.getElementById("settingsAvatar").textContent =
+        user.avatar;
+}
+
+
+function closeSettings(){
+
+    document.getElementById("settings").style.display =
+        "none";
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    localStorage.removeItem("nebulaCurrentUser");
+
+    currentUser = null;
+
+    document.getElementById("home").style.display =
+        "none";
+
+    document.getElementById("chat").style.display =
+        "none";
+
+    document.getElementById("settings").style.display =
+        "none";
+
+    document.getElementById("auth").style.display =
+        "flex";
+
+    document.getElementById("loginPassword").value = "";
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+/* DEMO USERS */
+
+function createDemoUsers(){
+
+    const users = getUsers();
+
+    if(users.length === 0){
+
+        users.push({
+            name:"Nebula Bot",
+            avatar:"🤖",
+            passwordHash:"",
+            createdAt:Date.now()
+        });
+
+        users.push({
+            name:"Test User",
+            avatar:"👾",
+            passwordHash:"",
+            createdAt:Date.now()
+        });
+
+        saveUsers(users);
+    }
+}
+
+
+/* START */
+
+createDemoUsers();
+
+if(currentUser){
+
+    showHome();
+
+}else{
+
+    document.getElementById("auth").style.display =
+        "flex";
+}
+
+</script>
+
+</body>
+  </html>
