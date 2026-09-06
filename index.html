@@ -2,583 +2,408 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nebula Messenger 0.8</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nebula Messenger 0.9</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Tahoma,Arial,sans-serif;
-}
-
+*{box-sizing:border-box}
 body{
-    background:#070a13;
-    color:white;
+    margin:0;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#080b14;
+    color:#fff;
 }
-
 button,input{
     font-family:inherit;
 }
-
+button{
+    border:0;
+    cursor:pointer;
+}
 .app{
-    max-width:520px;
-    min-height:100vh;
-    margin:auto;
-    background:#101525;
-    position:relative;
-    overflow:hidden;
-}
-
-/* AUTH */
-
-.auth{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:25px;
-}
-
-.auth-box{
-    width:100%;
-    padding:28px;
-    border-radius:25px;
-    background:#151b2d;
-    border:1px solid #27304a;
-    box-shadow:0 20px 60px #0008;
-}
-
-.logo{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.logo-icon{
-    width:78px;
-    height:78px;
-    margin:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:23px;
-    font-size:39px;
-    background:linear-gradient(135deg,#6c5ce7,#00cec9);
-}
-
-.logo h1{
-    margin-top:12px;
-    font-size:26px;
-}
-
-.logo p{
-    color:#7e89a4;
-    font-size:12px;
-    margin-top:6px;
-}
-
-.tabs{
-    display:flex;
-    gap:8px;
-    margin-bottom:18px;
-}
-
-.tab{
-    flex:1;
-    padding:12px;
-    border:0;
-    border-radius:13px;
-    background:#202840;
-    color:#aab3c9;
-    cursor:pointer;
-}
-
-.tab.active{
-    background:#6c5ce7;
-    color:white;
-}
-
-.field{
-    margin-bottom:13px;
-}
-
-.field label{
-    display:block;
-    color:#aab3c9;
-    font-size:13px;
-    margin-bottom:7px;
-}
-
-.field input{
-    width:100%;
-    padding:14px;
-    border:1px solid #2b3551;
-    border-radius:13px;
-    background:#0c111e;
-    color:white;
-    outline:none;
-}
-
-.main-btn{
-    width:100%;
-    padding:14px;
-    border:0;
-    border-radius:14px;
-    background:#6c5ce7;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.error{
-    min-height:18px;
-    color:#ff7675;
-    font-size:12px;
-    margin:8px 0;
-}
-
-/* HOME */
-
-.home{
-    display:none;
-    min-height:100vh;
-}
-
-.header{
-    padding:18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    border-bottom:1px solid #202840;
-}
-
-.header h2{
-    font-size:21px;
-}
-
-.header small{
-    color:#707b96;
-}
-
-.header-buttons{
-    display:flex;
-    gap:7px;
-}
-
-.icon-btn{
-    width:40px;
-    height:40px;
-    border:0;
-    border-radius:13px;
-    background:#202840;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.profile{
-    margin:15px;
-    padding:15px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    border-radius:19px;
-    background:linear-gradient(135deg,#1d2542,#151b2d);
-}
-
-.profile-avatar{
-    width:53px;
-    height:53px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:16px;
-    background:#292f49;
-    font-size:27px;
-}
-
-.profile-info{
-    flex:1;
-}
-
-.profile-info b{
-    display:block;
-}
-
-.profile-info span{
-    font-size:11px;
-}
-
-.status-online{
-    color:#00cec9;
-}
-
-.status-offline{
-    color:#747f98;
-}
-
-.search{
-    padding:0 15px 13px;
-}
-
-.search input{
-    width:100%;
-    padding:13px;
-    border:1px solid #252e47;
-    border-radius:14px;
-    background:#0c111e;
-    color:white;
-    outline:none;
-}
-
-.nav{
-    display:flex;
-    margin:0 12px 10px;
-    padding:4px;
-    border-radius:14px;
-    background:#181f32;
-}
-
-.nav button{
-    flex:1;
-    border:0;
-    padding:11px;
-    border-radius:11px;
-    background:none;
-    color:#78839d;
-    cursor:pointer;
-}
-
-.nav button.active{
-    background:#292f49;
-    color:white;
-}
-
-.section-title{
-    padding:7px 18px;
-    color:#78839d;
-    font-size:12px;
-}
-
-.chat-list,
-.contacts{
-    padding:0 9px 20px;
-}
-
-.chat-item,
-.contact-item{
-    display:flex;
-    align-items:center;
-    gap:11px;
-    padding:13px 9px;
-    border-radius:16px;
-    cursor:pointer;
-}
-
-.chat-item:hover,
-.contact-item:hover{
-    background:#1b2235;
-}
-
-.avatar{
-    width:50px;
-    height:50px;
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:16px;
-    background:#252d47;
-    font-size:25px;
-    position:relative;
-}
-
-.online-dot{
-    position:absolute;
-    width:10px;
-    height:10px;
-    left:0;
-    bottom:1px;
-    border-radius:50%;
-    background:#00cec9;
-    border:2px solid #101525;
-}
-
-.offline-dot{
-    position:absolute;
-    width:10px;
-    height:10px;
-    left:0;
-    bottom:1px;
-    border-radius:50%;
-    background:#69748d;
-    border:2px solid #101525;
-}
-
-.info{
-    flex:1;
-    min-width:0;
-}
-
-.info b{
-    display:block;
-}
-
-.info span{
-    display:block;
-    margin-top:4px;
-    color:#737e98;
-    font-size:11px;
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-}
-
-.empty{
-    text-align:center;
-    color:#69748e;
-    padding:40px 20px;
-}
-
-/* CHAT */
-
-.chat{
-    display:none;
+    max-width:1100px;
     height:100vh;
+    margin:auto;
+    display:flex;
+    background:#0d111d;
+    overflow:hidden;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:330px;
+    border-left:1px solid #202638;
+    display:flex;
     flex-direction:column;
 }
-
-.chat-header{
+.header{
+    padding:18px;
+    border-bottom:1px solid #202638;
+}
+.brand{
+    font-size:24px;
+    font-weight:bold;
+}
+.brand span{
+    color:#7c5cff;
+}
+.me{
+    margin-top:15px;
     display:flex;
     align-items:center;
     gap:10px;
-    padding:12px 14px;
-    border-bottom:1px solid #202840;
-}
-
-.back{
-    border:0;
-    background:none;
-    color:white;
-    font-size:28px;
-    cursor:pointer;
-}
-
-.chat-title{
-    flex:1;
-}
-
-.chat-title b{
-    display:block;
-}
-
-.chat-title span{
-    font-size:10px;
-}
-
-.messages{
-    flex:1;
-    overflow-y:auto;
-    padding:18px 13px;
-}
-
-.msg{
-    max-width:78%;
-    padding:9px 13px;
-    margin-bottom:10px;
-    border-radius:17px;
-    font-size:14px;
-    line-height:1.6;
-}
-
-.msg.me{
-    margin-right:auto;
-    background:#6355d9;
-    border-bottom-right-radius:5px;
-}
-
-.msg.other{
-    margin-left:auto;
-    background:#202840;
-    border-bottom-left-radius:5px;
-}
-
-.msg-time{
-    display:block;
-    font-size:9px;
-    opacity:.6;
-}
-
-.chat-input{
-    display:flex;
-    gap:8px;
+    background:#151a29;
     padding:12px;
-    border-top:1px solid #202840;
+    border-radius:15px;
 }
-
-.chat-input input{
-    flex:1;
-    padding:13px;
-    border:0;
-    border-radius:14px;
-    background:#202840;
-    color:white;
-    outline:none;
-}
-
-.send{
+.avatar{
     width:48px;
-    border:0;
-    border-radius:14px;
-    background:#6c5ce7;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-}
-
-/* PROFILE PAGE */
-
-.profile-page{
-    display:none;
-    position:absolute;
-    inset:0;
-    z-index:30;
-    background:#101525;
-}
-
-.page-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:18px;
-    border-bottom:1px solid #202840;
-}
-
-.page-header button{
-    border:0;
-    background:none;
-    color:white;
-    font-size:27px;
-    cursor:pointer;
-}
-
-.profile-big{
-    width:105px;
-    height:105px;
-    margin:28px auto 10px;
+    height:48px;
+    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:30px;
-    background:#252d47;
-    font-size:52px;
+    background:#20283d;
+    font-size:25px;
 }
-
-.profile-page-name{
-    text-align:center;
-    font-size:20px;
+.me-info{
+    flex:1;
+}
+.me-name{
     font-weight:bold;
 }
-
-.profile-page-status{
-    text-align:center;
-    color:#00cec9;
-    font-size:11px;
-    margin-top:5px;
+.status{
+    font-size:12px;
+    color:#7dffad;
+    margin-top:4px;
 }
-
-.card{
-    margin:18px;
-    padding:16px;
-    border-radius:17px;
-    background:#181f32;
+.search{
+    margin-top:14px;
 }
-
-.card label{
-    display:block;
-    color:#77829c;
-    font-size:11px;
-    margin-bottom:8px;
-}
-
-.card input{
+.search input{
     width:100%;
     padding:12px;
-    border:1px solid #2a3450;
     border-radius:12px;
-    background:#0c111e;
+    border:1px solid #293149;
+    background:#0b0f19;
     color:white;
     outline:none;
 }
-
-.avatar-picker{
+.tabs{
     display:flex;
-    flex-wrap:wrap;
+    padding:10px;
     gap:8px;
 }
-
-.avatar-choice{
-    width:45px;
-    height:45px;
-    border:2px solid transparent;
+.tab{
+    flex:1;
+    padding:10px;
+    border-radius:10px;
+    background:#151a29;
+    color:#aaa;
+}
+.tab.active{
+    background:#6f52e8;
+    color:white;
+}
+.list{
+    flex:1;
+    overflow:auto;
+    padding:8px;
+}
+.chat-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px;
     border-radius:13px;
-    background:#202840;
-    font-size:22px;
+    margin-bottom:5px;
     cursor:pointer;
 }
-
-.avatar-choice.selected{
-    border-color:#6c5ce7;
+.chat-item:hover{
+    background:#171d2d;
 }
-
-.save-btn{
-    width:100%;
-    margin-top:10px;
-    padding:13px;
-    border:0;
-    border-radius:13px;
-    background:#6c5ce7;
-    color:white;
+.chat-item.active{
+    background:#1b2235;
+}
+.chat-info{
+    flex:1;
+    min-width:0;
+}
+.chat-top{
+    display:flex;
+    justify-content:space-between;
+}
+.chat-name{
     font-weight:bold;
 }
-
-.logout{
-    width:calc(100% - 36px);
-    margin:0 18px;
-    padding:13px;
-    border:0;
-    border-radius:13px;
-    background:#392129;
-    color:#ff7675;
+.time{
+    font-size:10px;
+    color:#777;
 }
-
-/* SETTINGS */
-
-.settings{
-    display:none;
-    position:absolute;
-    inset:0;
-    z-index:20;
-    background:#101525;
+.preview{
+    color:#888;
+    font-size:12px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    margin-top:4px;
 }
-
-.settings-body{
-    padding:20px;
-}
-
-.setting-card{
-    padding:16px;
-    margin-bottom:12px;
-    border-radius:16px;
-    background:#181f32;
-}
-
-.setting-card span{
-    color:#727d97;
+.badge{
+    background:#7658ff;
+    color:#fff;
+    min-width:20px;
+    height:20px;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     font-size:11px;
 }
 
+/* MAIN */
+.main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+.empty{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#777;
+}
+.chat-header{
+    padding:13px 18px;
+    border-bottom:1px solid #202638;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.chat-title{
+    flex:1;
+}
+.chat-title strong{
+    display:block;
+}
+.chat-status{
+    font-size:11px;
+    color:#777;
+    margin-top:4px;
+}
+.header-btn{
+    background:#171d2d;
+    color:white;
+    width:38px;
+    height:38px;
+    border-radius:11px;
+}
+.messages{
+    flex:1;
+    overflow:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+.msg{
+    max-width:75%;
+    padding:9px 12px;
+    border-radius:15px;
+    position:relative;
+    line-height:1.7;
+    word-break:break-word;
+}
+.msg.mine{
+    align-self:flex-start;
+    background:#6f52e8;
+    border-bottom-left-radius:4px;
+}
+.msg.theirs{
+    align-self:flex-end;
+    background:#192033;
+    border-bottom-right-radius:4px;
+}
+.msg-time{
+    font-size:9px;
+    opacity:.6;
+    margin-right:6px;
+}
+.msg-actions{
+    display:none;
+    position:absolute;
+    top:-35px;
+    right:0;
+    background:#101522;
+    border:1px solid #293149;
+    border-radius:10px;
+    padding:4px;
+    z-index:5;
+}
+.msg:hover .msg-actions{
+    display:flex;
+    gap:3px;
+}
+.msg-actions button{
+    background:#20283a;
+    color:white;
+    padding:5px 7px;
+    border-radius:7px;
+}
+.reaction{
+    position:absolute;
+    bottom:-12px;
+    left:8px;
+    background:#111827;
+    border-radius:10px;
+    padding:1px 6px;
+    font-size:12px;
+}
+.audio{
+    width:230px;
+}
+.composer{
+    padding:12px;
+    border-top:1px solid #202638;
+    display:flex;
+    gap:8px;
+}
+.composer input{
+    flex:1;
+    background:#151a29;
+    border:1px solid #293149;
+    color:white;
+    border-radius:13px;
+    padding:12px;
+    outline:none;
+}
+.send,.record{
+    width:45px;
+    border-radius:13px;
+    color:white;
+}
+.send{
+    background:#6f52e8;
+}
+.record{
+    background:#252d40;
+}
+.record.recording{
+    background:#d64d67;
+}
+.editing{
+    background:#211c38;
+    padding:7px 14px;
+    font-size:12px;
+    display:none;
+}
+.editing.show{
+    display:block;
+}
+
+/* PAGES */
+.page{
+    flex:1;
+    overflow:auto;
+    padding:25px;
+}
+.card{
+    background:#151a29;
+    border:1px solid #242c40;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:15px;
+}
+.card h2{
+    margin-top:0;
+}
+.row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid #252c3d;
+}
+.row:last-child{
+    border-bottom:0;
+}
+.primary{
+    background:#6f52e8;
+    color:white;
+    padding:10px 16px;
+    border-radius:11px;
+}
+.danger{
+    background:#c9475d;
+    color:white;
+    padding:10px 16px;
+    border-radius:11px;
+}
+.secondary{
+    background:#252d40;
+    color:white;
+    padding:10px 16px;
+    border-radius:11px;
+}
+.profile-big{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.profile-big .avatar{
+    width:75px;
+    height:75px;
+    font-size:38px;
+}
+.profile-input{
+    width:100%;
+    padding:12px;
+    margin-top:7px;
+    background:#0c111d;
+    color:white;
+    border:1px solid #293149;
+    border-radius:10px;
+    outline:none;
+}
+.emoji-list{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:8px;
+}
+.emoji-list button{
+    background:#20283a;
+    font-size:22px;
+    padding:7px 10px;
+    border-radius:10px;
+}
+.contact{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:13px;
+    background:#151a29;
+    margin-bottom:8px;
+    border-radius:13px;
+}
+.contact .contact-info{
+    flex:1;
+}
+.plus{
+    background:#6f52e8;
+    color:white;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    font-size:22px;
+}
+@media(max-width:700px){
+    .sidebar{width:100%}
+    .main{display:none}
+    .sidebar.chat-open{display:none}
+    .main.mobile-show{display:flex}
+}
 </style>
 </head>
 
@@ -586,1264 +411,858 @@ button,input{
 
 <div class="app">
 
-<!-- AUTH -->
+<aside class="sidebar" id="sidebar">
 
-<div class="auth" id="auth">
+    <div class="header">
+        <div class="brand">🌌 Nebula <span>Messenger</span></div>
 
-<div class="auth-box">
+        <div class="me" onclick="showPage('profile')">
+            <div class="avatar" id="myAvatar">🌌</div>
+            <div class="me-info">
+                <div class="me-name" id="myName">کاربر</div>
+                <div class="status">● آنلاین</div>
+            </div>
+            <button class="plus" onclick="event.stopPropagation();showPage('contacts')">+</button>
+        </div>
 
-<div class="logo">
-<div class="logo-icon">☄️</div>
-<h1>Nebula Messenger</h1>
-<p>نسخه 0.8 • Profile Edition</p>
+        <div class="search">
+            <input id="search" placeholder="🔎 جستجو..." oninput="renderCurrentList()">
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" id="tabChats" onclick="setTab('chats')">💬 چت‌ها</button>
+        <button class="tab" id="tabContacts" onclick="setTab('contacts')">👥 مخاطبین</button>
+    </div>
+
+    <div class="list" id="list"></div>
+
+    <div style="padding:10px;border-top:1px solid #202638">
+        <button class="secondary" style="width:100%" onclick="showPage('settings')">⚙️ تنظیمات</button>
+    </div>
+</aside>
+
+<main class="main" id="main">
+
+    <div class="empty" id="empty">
+        <div>
+            <div style="font-size:60px">🌌</div>
+            <h2>Nebula Messenger</h2>
+            <p>یک چت را انتخاب کنید یا از + برای شروع استفاده کنید.</p>
+        </div>
+    </div>
+
+    <section id="chat" style="display:none;flex:1;flex-direction:column">
+
+        <div class="chat-header">
+            <div class="avatar" id="chatAvatar">🌌</div>
+
+            <div class="chat-title">
+                <strong id="chatName">کاربر</strong>
+                <div class="chat-status" id="chatStatus">● آفلاین</div>
+            </div>
+
+            <button class="header-btn" onclick="pinCurrentChat()">📌</button>
+            <button class="header-btn" onclick="deleteCurrentChat()">🗑️</button>
+        </div>
+
+        <div class="messages" id="messages"></div>
+
+        <div class="editing" id="editingBar">
+            ✏️ در حال ویرایش پیام
+            <button onclick="cancelEdit()" style="float:left;background:none;color:#fff">✕</button>
+        </div>
+
+        <div class="composer">
+            <button class="record" id="recordBtn" onclick="toggleRecording()">🎙️</button>
+            <input id="messageInput" placeholder="پیامتان را بنویسید..." onkeydown="if(event.key==='Enter')sendMessage()">
+            <button class="send" onclick="sendMessage()">➤</button>
+        </div>
+
+    </section>
+
+    <section class="page" id="profilePage" style="display:none">
+        <div class="card">
+            <h2>👤 پروفایل من</h2>
+
+            <div class="profile-big">
+                <div class="avatar" id="profileAvatar">🌌</div>
+                <div>
+                    <h3 id="profileName">کاربر</h3>
+                    <span style="color:#7dffad">● آنلاین</span>
+                </div>
+            </div>
+
+            <br>
+
+            <label>نام کاربری</label>
+            <input class="profile-input" id="usernameInput">
+
+            <br><br>
+
+            <label>وضعیت</label>
+            <input class="profile-input" id="statusInput">
+
+            <br><br>
+
+            <label>آواتار</label>
+            <div class="emoji-list">
+                <button onclick="selectAvatar('🌌')">🌌</button>
+                <button onclick="selectAvatar('😎')">😎</button>
+                <button onclick="selectAvatar('🚀')">🚀</button>
+                <button onclick="selectAvatar('👾')">👾</button>
+                <button onclick="selectAvatar('🤖')">🤖</button>
+                <button onclick="selectAvatar('🔥')">🔥</button>
+                <button onclick="selectAvatar('⭐')">⭐</button>
+                <button onclick="selectAvatar('🎮')">🎮</button>
+            </div>
+
+            <br>
+            <button class="primary" onclick="saveProfile()">💾 ذخیره تغییرات</button>
+        </div>
+    </section>
+
+    <section class="page" id="contactsPage" style="display:none">
+        <div class="card">
+            <h2>👥 مخاطبین</h2>
+            <div id="contacts"></div>
+        </div>
+    </section>
+
+    <section class="page" id="settingsPage" style="display:none">
+        <div class="card">
+            <h2>⚙️ تنظیمات</h2>
+
+            <div class="row">
+                <span>🌌 نسخه</span>
+                <strong>0.9</strong>
+            </div>
+
+            <div class="row">
+                <span>💾 حالت ذخیره‌سازی</span>
+                <strong>Local</strong>
+            </div>
+
+            <div class="row">
+                <span>🔔 اعلان‌ها</span>
+                <strong>فعال</strong>
+            </div>
+
+            <div class="row">
+                <span>🗑️ پاک کردن همه اطلاعات</span>
+                <button class="danger" onclick="resetApp()">پاک کردن</button>
+            </div>
+        </div>
+    </section>
+
+</main>
 </div>
-
-<div class="tabs">
-<button class="tab active" id="loginTab"
-onclick="switchAuth('login')">ورود</button>
-
-<button class="tab" id="registerTab"
-onclick="switchAuth('register')">ثبت‌نام</button>
-</div>
-
-<div id="loginForm">
-
-<div class="field">
-<label>نام کاربری</label>
-<input id="loginUsername" placeholder="نام کاربری">
-</div>
-
-<div class="field">
-<label>رمز عبور</label>
-<input id="loginPassword" type="password" placeholder="رمز عبور">
-</div>
-
-<div class="error" id="loginError"></div>
-
-<button class="main-btn" onclick="login()">ورود 🚀</button>
-
-</div>
-
-<div id="registerForm" style="display:none">
-
-<div class="field">
-<label>نام کاربری</label>
-<input id="registerUsername" placeholder="حداقل ۳ کاراکتر">
-</div>
-
-<div class="field">
-<label>رمز عبور</label>
-<input id="registerPassword" type="password">
-</div>
-
-<div class="field">
-<label>تکرار رمز عبور</label>
-<input id="registerConfirm" type="password">
-</div>
-
-<div class="error" id="registerError"></div>
-
-<button class="main-btn" onclick="register()">ساخت حساب ✨</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- HOME -->
-
-<div class="home" id="home">
-
-<div class="header">
-
-<div>
-<h2>💬 Nebula</h2>
-<small>نسخه 0.8</small>
-</div>
-
-<div class="header-buttons">
-
-<button class="icon-btn"
-onclick="openProfile()">👤</button>
-
-<button class="icon-btn"
-onclick="openSettings()">⚙️</button>
-
-</div>
-
-</div>
-
-
-<div class="profile">
-
-<div class="profile-avatar" id="myAvatar">👨‍💻</div>
-
-<div class="profile-info">
-<b id="myName">---</b>
-<span class="status-online">● آنلاین</span>
-</div>
-
-</div>
-
-
-<div class="search">
-<input id="searchInput"
-placeholder="🔎 جستجو..."
-oninput="renderCurrentPage()">
-</div>
-
-
-<div class="nav">
-
-<button id="chatsTab"
-class="active"
-onclick="showPage('chats')">
-💬 چت‌ها
-</button>
-
-<button id="contactsTab"
-onclick="showPage('contacts')">
-👥 مخاطبین
-</button>
-
-</div>
-
-
-<div id="chatsPage">
-
-<div class="section-title">
-چت‌های اخیر
-</div>
-
-<div class="chat-list" id="chatList"></div>
-
-</div>
-
-
-<div id="contactsPage" style="display:none">
-
-<div class="section-title">
-همه کاربران
-</div>
-
-<div class="contacts" id="contacts"></div>
-
-</div>
-
-</div>
-
-
-<!-- CHAT -->
-
-<div class="chat" id="chat">
-
-<div class="chat-header">
-
-<button class="back"
-onclick="closeChat()">‹</button>
-
-<div class="avatar" id="chatAvatar">
-🤖
-</div>
-
-<div class="chat-title">
-
-<b id="chatName">---</b>
-
-<span id="chatStatus"
-class="status-online">
-● آنلاین
-</span>
-
-</div>
-
-<button class="icon-btn"
-onclick="clearChat()">🗑️</button>
-
-</div>
-
-
-<div class="messages" id="messages"></div>
-
-
-<div class="chat-input">
-
-<input id="messageInput"
-placeholder="پیام بنویس..."
-onkeydown="if(event.key==='Enter')sendMessage()">
-
-<button class="send"
-onclick="sendMessage()">➤</button>
-
-</div>
-
-</div>
-
-
-<!-- PROFILE -->
-
-<div class="profile-page" id="profilePage">
-
-<div class="page-header">
-
-<button onclick="closeProfile()">‹</button>
-
-<h2>پروفایل من</h2>
-
-</div>
-
-
-<div class="profile-big"
-id="profileBigAvatar">
-👨‍💻
-</div>
-
-<div class="profile-page-name"
-id="profilePageName">
----
-</div>
-
-<div class="profile-page-status">
-● آنلاین
-</div>
-
-
-<div class="card">
-
-<label>نام کاربری</label>
-
-<input id="editName"
-maxlength="25">
-
-<label style="margin-top:15px">
-آواتار
-</label>
-
-<div class="avatar-picker">
-
-<button class="avatar-choice selected"
-onclick="chooseAvatar(this,'👨‍💻')">👨‍💻</button>
-
-<button class="avatar-choice"
-onclick="chooseAvatar(this,'😎')">😎</button>
-
-<button class="avatar-choice"
-onclick="chooseAvatar(this,'🚀')">🚀</button>
-
-<button class="avatar-choice"
-onclick="chooseAvatar(this,'👾')">👾</button>
-
-<button class="avatar-choice"
-onclick="chooseAvatar(this,'🤖')">🤖</button>
-
-<button class="avatar-choice"
-onclick="chooseAvatar(this,'🧑‍🚀')">🧑‍🚀</button>
-
-</div>
-
-<button class="save-btn"
-onclick="saveProfile()">
-💾 ذخیره تغییرات
-</button>
-
-<div class="error" id="profileError"></div>
-
-</div>
-
-
-<button class="logout"
-onclick="logout()">
-🚪 خروج از حساب
-</button>
-
-</div>
-
-
-<!-- SETTINGS -->
-
-<div class="settings" id="settings">
-
-<div class="page-header">
-
-<button onclick="closeSettings()">‹</button>
-
-<h2>تنظیمات</h2>
-
-</div>
-
-<div class="settings-body">
-
-<div class="setting-card">
-<b>Nebula Messenger</b>
-<br>
-<span>نسخه 0.8 • Profile Edition</span>
-</div>
-
-<div class="setting-card">
-<b>🔒 حالت محلی</b>
-<br>
-<span>
-اطلاعات این نسخه داخل مرورگر ذخیره می‌شود.
-</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 
 <script>
+/* =========================
+   DATABASE
+========================= */
 
-let currentUser =
-localStorage.getItem("nebulaCurrentUser");
+const USERS_KEY = "nebulaUsers";
+const CURRENT_KEY = "nebulaCurrentUser";
 
+let users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+let currentUser = localStorage.getItem(CURRENT_KEY);
 let currentChat = null;
+let currentTab = "chats";
+let editMessageId = null;
+let selectedAvatar = "🌌";
+let recorder = null;
+let audioChunks = [];
+let recording = false;
 
-let currentPage = "chats";
-
-let selectedProfileAvatar = "👨‍💻";
-
-
-/* USERS */
-
-function getUsers(){
-
-return JSON.parse(
-localStorage.getItem("nebulaUsers") || "[]"
-);
-
+function saveUsers(){
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }
 
-function saveUsers(users){
-
-localStorage.setItem(
-"nebulaUsers",
-JSON.stringify(users)
-);
-
+function getMe(){
+    return users.find(u=>u.name===currentUser);
 }
 
-
-/* PASSWORD */
-
-async function hashPassword(password){
-
-const data =
-new TextEncoder().encode(password);
-
-const hash =
-await crypto.subtle.digest(
-"SHA-256",
-data
-);
-
-return [...new Uint8Array(hash)]
-.map(x=>x.toString(16).padStart(2,"0"))
-.join("");
-
+function chatKey(a,b){
+    return "nebula_chat_" + [a,b].sort().join("__");
 }
 
-
-/* AUTH */
-
-function switchAuth(type){
-
-const login =
-type === "login";
-
-document.getElementById("loginForm")
-.style.display =
-login ? "block" : "none";
-
-document.getElementById("registerForm")
-.style.display =
-login ? "none" : "block";
-
-document.getElementById("loginTab")
-.classList.toggle("active",login);
-
-document.getElementById("registerTab")
-.classList.toggle("active",!login);
-
+function readKey(a,b){
+    return "nebula_read_" + [a,b].sort().join("__");
 }
 
-
-/* REGISTER */
-
-async function register(){
-
-const username =
-document.getElementById("registerUsername")
-.value.trim();
-
-const password =
-document.getElementById("registerPassword")
-.value;
-
-const confirm =
-document.getElementById("registerConfirm")
-.value;
-
-const error =
-document.getElementById("registerError");
-
-error.textContent = "";
-
-if(username.length < 3){
-
-error.textContent =
-"نام کاربری باید حداقل ۳ کاراکتر باشد.";
-
-return;
-
+function getChat(a,b){
+    return JSON.parse(localStorage.getItem(chatKey(a,b)) || "[]");
 }
 
-if(password.length < 4){
-
-error.textContent =
-"رمز عبور حداقل ۴ کاراکتر باشد.";
-
-return;
-
+function saveChat(a,b,messages){
+    localStorage.setItem(chatKey(a,b),JSON.stringify(messages));
 }
 
-if(password !== confirm){
-
-error.textContent =
-"رمزها یکسان نیستند.";
-
-return;
-
+function timeText(ts){
+    return new Date(ts).toLocaleTimeString("fa-IR",{
+        hour:"2-digit",
+        minute:"2-digit"
+    });
 }
 
-const users = getUsers();
+/* =========================
+   INITIAL DATA
+========================= */
 
-if(users.some(
-u=>u.name.toLowerCase() === username.toLowerCase()
-)){
-
-error.textContent =
-"این نام کاربری قبلاً استفاده شده.";
-
-return;
-
+if(!users.length){
+    users=[
+        {
+            name:"Nebula Bot",
+            avatar:"🤖",
+            passwordHash:"",
+            online:false,
+            status:"ربات رسمی Nebula 🌌",
+            createdAt:Date.now()
+        },
+        {
+            name:"Test User",
+            avatar:"👾",
+            passwordHash:"",
+            online:false,
+            status:"در Nebula هستم!",
+            createdAt:Date.now()
+        }
+    ];
+    saveUsers();
 }
 
-const hash =
-await hashPassword(password);
-
-users.push({
-
-name:username,
-
-avatar:"👨‍💻",
-
-passwordHash:hash,
-
-online:true,
-
-createdAt:Date.now()
-
-});
-
-saveUsers(users);
-
-currentUser = username;
-
-localStorage.setItem(
-"nebulaCurrentUser",
-username
-);
-
-showHome();
-
+if(!currentUser){
+    const newName="Amir";
+    users.push({
+        name:newName,
+        avatar:"🌌",
+        passwordHash:"",
+        online:true,
+        status:"سلام! من در Nebula هستم 🌌",
+        createdAt:Date.now()
+    });
+    currentUser=newName;
+    localStorage.setItem(CURRENT_KEY,currentUser);
+    saveUsers();
 }
 
-
-/* LOGIN */
-
-async function login(){
-
-const username =
-document.getElementById("loginUsername")
-.value.trim();
-
-const password =
-document.getElementById("loginPassword")
-.value;
-
-const error =
-document.getElementById("loginError");
-
-const user =
-getUsers().find(
-u=>u.name.toLowerCase()
-=== username.toLowerCase()
-);
-
-if(!user){
-
-error.textContent =
-"نام کاربری یا رمز عبور اشتباه است.";
-
-return;
-
+const me=getMe();
+if(me){
+    me.online=true;
+    saveUsers();
 }
 
-const hash =
-await hashPassword(password);
+/* =========================
+   UI
+========================= */
 
-if(hash !== user.passwordHash){
+function updateMeUI(){
+    const me=getMe();
+    if(!me)return;
 
-error.textContent =
-"نام کاربری یا رمز عبور اشتباه است.";
-
-return;
-
+    document.getElementById("myName").textContent=me.name;
+    document.getElementById("myAvatar").textContent=me.avatar;
+    document.getElementById("profileAvatar").textContent=me.avatar;
+    document.getElementById("profileName").textContent=me.name;
 }
 
-user.online = true;
+function setTab(tab){
+    currentTab=tab;
 
-saveUsers(getUsers());
+    document.getElementById("tabChats").classList.toggle("active",tab==="chats");
+    document.getElementById("tabContacts").classList.toggle("active",tab==="contacts");
 
-currentUser = user.name;
-
-localStorage.setItem(
-"nebulaCurrentUser",
-currentUser
-);
-
-showHome();
-
+    renderCurrentList();
 }
 
-
-/* HOME */
-
-function showHome(){
-
-document.getElementById("auth")
-.style.display = "none";
-
-document.getElementById("home")
-.style.display = "block";
-
-document.getElementById("chat")
-.style.display = "none";
-
-const user =
-getUsers().find(
-u=>u.name===currentUser
-);
-
-if(!user){
-
-logout();
-
-return;
-
+function renderCurrentList(){
+    if(currentTab==="chats"){
+        renderChats();
+    }else{
+        renderContacts();
+    }
 }
 
-document.getElementById("myName")
-.textContent = user.name;
+function renderChats(){
+    const box=document.getElementById("list");
+    const query=document.getElementById("search").value.toLowerCase();
 
-document.getElementById("myAvatar")
-.textContent = user.avatar;
+    let people=users.filter(u=>u.name!==currentUser);
 
-showPage("chats");
+    let data=people.map(user=>{
+        const messages=getChat(currentUser,user.name);
+        const last=messages[messages.length-1];
 
+        const read=Number(localStorage.getItem(readKey(currentUser,user.name))||0);
+
+        const unread=messages.filter(m=>
+            m.sender!==currentUser && m.time>read
+        ).length;
+
+        return {user,last,unread};
+    });
+
+    data.sort((a,b)=>{
+        const ap=a.user.pinned?1:0;
+        const bp=b.user.pinned?1:0;
+
+        if(ap!==bp)return bp-ap;
+
+        return (b.last?.time||0)-(a.last?.time||0);
+    });
+
+    data=data.filter(x=>
+        x.user.name.toLowerCase().includes(query)
+    );
+
+    box.innerHTML="";
+
+    if(!data.length){
+        box.innerHTML='<div style="padding:20px;text-align:center;color:#777">چتی پیدا نشد.</div>';
+        return;
+    }
+
+    data.forEach(({user,last,unread})=>{
+        const el=document.createElement("div");
+        el.className="chat-item "+(currentChat===user.name?"active":"");
+
+        el.onclick=()=>openChat(user.name);
+
+        el.oncontextmenu=e=>{
+            e.preventDefault();
+            user.pinned=!user.pinned;
+            saveUsers();
+            renderChats();
+        };
+
+        el.innerHTML=`
+            <div class="avatar">${user.avatar}</div>
+            <div class="chat-info">
+                <div class="chat-top">
+                    <span class="chat-name">
+                        ${user.pinned?"📌 ":""}${escapeHTML(user.name)}
+                    </span>
+                    <span class="time">${last?timeText(last.time):""}</span>
+                </div>
+                <div class="preview">
+                    ${last?previewMessage(last):user.status||"شروع گفتگو"}
+                </div>
+            </div>
+            ${unread?`<div class="badge">${unread}</div>`:""}
+        `;
+
+        box.appendChild(el);
+    });
 }
 
+function renderContacts(){
+    const box=document.getElementById("list");
+    const query=document.getElementById("search").value.toLowerCase();
 
-/* PAGES */
+    box.innerHTML="";
+
+    users
+    .filter(u=>u.name!==currentUser)
+    .filter(u=>u.name.toLowerCase().includes(query))
+    .forEach(user=>{
+        const el=document.createElement("div");
+        el.className="chat-item";
+
+        el.onclick=()=>openChat(user.name);
+
+        el.innerHTML=`
+            <div class="avatar">${user.avatar}</div>
+            <div class="chat-info">
+                <div class="chat-name">${escapeHTML(user.name)}</div>
+                <div class="preview">${escapeHTML(user.status||"بدون وضعیت")}</div>
+            </div>
+            <span style="font-size:10px;color:${user.online?"#70e09c":"#777"}">
+                ${user.online?"● آنلاین":"○ آفلاین"}
+            </span>
+        `;
+
+        box.appendChild(el);
+    });
+}
+
+function previewMessage(m){
+    if(m.type==="audio")return "🎙️ پیام صوتی";
+    if(m.deleted)return "پیام حذف شد";
+    return escapeHTML(m.text||"");
+}
+
+/* =========================
+   CHAT
+========================= */
+
+function openChat(name){
+    currentChat=name;
+
+    document.getElementById("empty").style.display="none";
+    document.getElementById("chat").style.display="flex";
+
+    document.getElementById("profilePage").style.display="none";
+    document.getElementById("contactsPage").style.display="none";
+    document.getElementById("settingsPage").style.display="none";
+
+    const user=users.find(u=>u.name===name);
+    if(!user)return;
+
+    document.getElementById("chatAvatar").textContent=user.avatar;
+    document.getElementById("chatName").textContent=user.name;
+    document.getElementById("chatStatus").textContent=
+        user.online?"● آنلاین":"○ "+(user.status||"آفلاین");
+
+    localStorage.setItem(
+        readKey(currentUser,name),
+        Date.now()
+    );
+
+    renderMessages();
+    renderChats();
+}
+
+function renderMessages(){
+    const box=document.getElementById("messages");
+    box.innerHTML="";
+
+    if(!currentChat)return;
+
+    const messages=getChat(currentUser,currentChat);
+
+    messages.forEach(m=>{
+        const el=document.createElement("div");
+
+        el.className="msg "+(m.sender===currentUser?"mine":"theirs");
+
+        let content="";
+
+        if(m.deleted){
+            content=`<i style="opacity:.6">این پیام حذف شده است</i>`;
+        }
+        else if(m.type==="audio"){
+            content=`
+                <audio class="audio" controls src="${m.audio}"></audio>
+            `;
+        }
+        else{
+            content=escapeHTML(m.text||"");
+        }
+
+        el.innerHTML=`
+            ${content}
+
+            <span class="msg-time">${timeText(m.time)}</span>
+
+            ${
+                m.sender===currentUser && !m.deleted
+                ?
+                `<div class="msg-actions">
+                    <button onclick="editMessage('${m.id}')">✏️</button>
+                    <button onclick="deleteMessage('${m.id}')">🗑️</button>
+                    <button onclick="reactMessage('${m.id}','❤️')">❤️</button>
+                    <button onclick="reactMessage('${m.id}','😂')">😂</button>
+                </div>`
+                :
+                `<div class="msg-actions">
+                    <button onclick="reactMessage('${m.id}','❤️')">❤️</button>
+                    <button onclick="reactMessage('${m.id}','😂')">😂</button>
+                    <button onclick="reactMessage('${m.id}','👍')">👍</button>
+                </div>`
+            }
+
+            ${m.reaction?`<span class="reaction">${m.reaction}</span>`:""}
+        `;
+
+        box.appendChild(el);
+    });
+
+    box.scrollTop=box.scrollHeight;
+}
+
+function sendMessage(){
+    const input=document.getElementById("messageInput");
+    const text=input.value.trim();
+
+    if(!text || !currentChat)return;
+
+    const messages=getChat(currentUser,currentChat);
+
+    if(editMessageId){
+        const msg=messages.find(m=>m.id===editMessageId);
+
+        if(msg){
+            msg.text=text;
+            msg.edited=true;
+        }
+
+        saveChat(currentUser,currentChat,messages);
+
+        editMessageId=null;
+        document.getElementById("editingBar").classList.remove("show");
+        input.value="";
+
+        renderMessages();
+        renderChats();
+        return;
+    }
+
+    messages.push({
+        id:crypto.randomUUID(),
+        sender:currentUser,
+        text:text,
+        type:"text",
+        time:Date.now(),
+        reaction:null
+    });
+
+    saveChat(currentUser,currentChat,messages);
+
+    input.value="";
+    renderMessages();
+    renderChats();
+}
+
+/* =========================
+   MESSAGE ACTIONS
+========================= */
+
+function editMessage(id){
+    const messages=getChat(currentUser,currentChat);
+    const msg=messages.find(m=>m.id===id);
+
+    if(!msg || msg.sender!==currentUser || msg.type==="audio")return;
+
+    editMessageId=id;
+
+    document.getElementById("messageInput").value=msg.text;
+    document.getElementById("messageInput").focus();
+
+    document.getElementById("editingBar").classList.add("show");
+}
+
+function cancelEdit(){
+    editMessageId=null;
+    document.getElementById("messageInput").value="";
+    document.getElementById("editingBar").classList.remove("show");
+}
+
+function deleteMessage(id){
+    const messages=getChat(currentUser,currentChat);
+    const msg=messages.find(m=>m.id===id);
+
+    if(!msg || msg.sender!==currentUser)return;
+
+    msg.deleted=true;
+    msg.text="";
+    msg.audio=null;
+
+    saveChat(currentUser,currentChat,messages);
+    renderMessages();
+    renderChats();
+}
+
+function reactMessage(id,emoji){
+    const messages=getChat(currentUser,currentChat);
+    const msg=messages.find(m=>m.id===id);
+
+    if(!msg)return;
+
+    msg.reaction=msg.reaction===emoji?null:emoji;
+
+    saveChat(currentUser,currentChat,messages);
+    renderMessages();
+}
+
+function pinCurrentChat(){
+    if(!currentChat)return;
+
+    const user=users.find(u=>u.name===currentChat);
+    if(!user)return;
+
+    user.pinned=!user.pinned;
+    saveUsers();
+    renderChats();
+}
+
+function deleteCurrentChat(){
+    if(!currentChat)return;
+
+    if(confirm("آیا این گفتگو حذف شود؟")){
+        localStorage.removeItem(chatKey(currentUser,currentChat));
+        localStorage.removeItem(readKey(currentUser,currentChat));
+
+        currentChat=null;
+
+        document.getElementById("chat").style.display="none";
+        document.getElementById("empty").style.display="flex";
+
+        renderChats();
+    }
+}
+
+/* =========================
+   VOICE MESSAGE
+========================= */
+
+async function toggleRecording(){
+
+    if(recording){
+        recorder.stop();
+        recording=false;
+
+        document.getElementById("recordBtn").classList.remove("recording");
+        document.getElementById("recordBtn").textContent="🎙️";
+
+        return;
+    }
+
+    if(!currentChat){
+        alert("اول یک چت را انتخاب کنید.");
+        return;
+    }
+
+    try{
+        const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+
+        audioChunks=[];
+
+        recorder=new MediaRecorder(stream);
+
+        recorder.ondataavailable=e=>{
+            if(e.data.size>0)audioChunks.push(e.data);
+        };
+
+        recorder.onstop=()=>{
+            const blob=new Blob(audioChunks,{type:"audio/webm"});
+            const reader=new FileReader();
+
+            reader.onloadend=()=>{
+                const messages=getChat(currentUser,currentChat);
+
+                messages.push({
+                    id:crypto.randomUUID(),
+                    sender:currentUser,
+                    type:"audio",
+                    audio:reader.result,
+                    time:Date.now(),
+                    reaction:null
+                });
+
+                saveChat(currentUser,currentChat,messages);
+                renderMessages();
+                renderChats();
+
+                stream.getTracks().forEach(t=>t.stop());
+            };
+
+            reader.readAsDataURL(blob);
+        };
+
+        recorder.start();
+
+        recording=true;
+
+        document.getElementById("recordBtn").classList.add("recording");
+        document.getElementById("recordBtn").textContent="⏹️";
+
+    }catch(e){
+        alert("دسترسی به میکروفون امکان‌پذیر نیست.");
+    }
+}
+
+/* =========================
+   PROFILE
+========================= */
 
 function showPage(page){
 
-currentPage = page;
+    document.getElementById("empty").style.display="none";
+    document.getElementById("chat").style.display="none";
 
-document.getElementById("chatsPage")
-.style.display =
-page==="chats" ? "block" : "none";
+    document.getElementById("profilePage").style.display="none";
+    document.getElementById("contactsPage").style.display="none";
+    document.getElementById("settingsPage").style.display="none";
 
-document.getElementById("contactsPage")
-.style.display =
-page==="contacts" ? "block" : "none";
+    if(page==="profile"){
+        const me=getMe();
 
-document.getElementById("chatsTab")
-.classList.toggle(
-"active",
-page==="chats"
-);
+        document.getElementById("usernameInput").value=me.name;
+        document.getElementById("statusInput").value=
+            me.status||"سلام! من در Nebula هستم 🌌";
 
-document.getElementById("contactsTab")
-.classList.toggle(
-"active",
-page==="contacts"
-);
+        document.getElementById("profilePage").style.display="block";
+    }
 
-renderCurrentPage();
+    if(page==="contacts"){
+        renderFullContacts();
+        document.getElementById("contactsPage").style.display="block";
+    }
 
+    if(page==="settings"){
+        document.getElementById("settingsPage").style.display="block";
+    }
 }
 
+function renderFullContacts(){
 
-function renderCurrentPage(){
+    const box=document.getElementById("contacts");
 
-if(currentPage==="chats")
-renderChats();
+    box.innerHTML="";
 
-else
-renderContacts();
+    users
+    .filter(u=>u.name!==currentUser)
+    .forEach(user=>{
+        const el=document.createElement("div");
+        el.className="contact";
 
+        el.innerHTML=`
+            <div class="avatar">${user.avatar}</div>
+            <div class="contact-info">
+                <strong>${escapeHTML(user.name)}</strong>
+                <div style="font-size:11px;color:#777">
+                    ${escapeHTML(user.status||"بدون وضعیت")}
+                </div>
+            </div>
+            <button class="primary" onclick="openChat('${escapeAttribute(user.name)}')">
+                چت
+            </button>
+        `;
+
+        box.appendChild(el);
+    });
 }
 
-
-/* CHAT KEY */
-
-function chatKey(a,b){
-
-return "nebula_chat_" +
-[a,b].sort().join("_");
-
+function selectAvatar(a){
+    selectedAvatar=a;
+    document.getElementById("profileAvatar").textContent=a;
 }
-
-
-/* CHAT */
-
-function getChat(username){
-
-return JSON.parse(
-localStorage.getItem(
-chatKey(currentUser,username)
-) || "[]"
-);
-
-}
-
-
-/* CHATS */
-
-function renderChats(){
-
-const list =
-document.getElementById("chatList");
-
-const search =
-document.getElementById("searchInput")
-.value.trim().toLowerCase();
-
-const users =
-getUsers()
-.filter(u=>u.name!==currentUser)
-.filter(u=>
-u.name.toLowerCase()
-.includes(search)
-);
-
-let chats =
-users.map(user=>{
-
-const messages =
-getChat(user.name);
-
-const last =
-messages[messages.length-1];
-
-return {
-user:user,
-last:last
-};
-
-});
-
-chats.sort((a,b)=>
-(b.last?.timestamp||0) -
-(a.last?.timestamp||0)
-);
-
-list.innerHTML = "";
-
-if(chats.length===0){
-
-list.innerHTML =
-`<div class="empty">
-هنوز چتی وجود ندارد 💬
-</div>`;
-
-return;
-
-}
-
-chats.forEach(c=>{
-
-const div =
-document.createElement("div");
-
-div.className = "chat-item";
-
-const status =
-c.user.online !== false;
-
-div.innerHTML = `
-
-<div class="avatar">
-
-${escapeHTML(c.user.avatar)}
-
-<span class="${
-status
-? "online-dot"
-: "offline-dot"
-}"></span>
-
-</div>
-
-<div class="info">
-
-<b>${escapeHTML(c.user.name)}</b>
-
-<span>
-${
-c.last
-? escapeHTML(c.last.text)
-: "شروع گفت‌وگو..."
-}
-</span>
-
-</div>
-
-`;
-
-div.onclick =
-()=>openChat(c.user.name);
-
-list.appendChild(div);
-
-});
-
-}
-
-
-/* CONTACTS */
-
-function renderContacts(){
-
-const list =
-document.getElementById("contacts");
-
-const search =
-document.getElementById("searchInput")
-.value.trim().toLowerCase();
-
-const users =
-getUsers()
-.filter(u=>u.name!==currentUser)
-.filter(u=>
-u.name.toLowerCase()
-.includes(search)
-);
-
-list.innerHTML = "";
-
-if(users.length===0){
-
-list.innerHTML =
-`<div class="empty">
-مخاطبی پیدا نشد 👥
-</div>`;
-
-return;
-
-}
-
-users.forEach(user=>{
-
-const div =
-document.createElement("div");
-
-div.className =
-"contact-item";
-
-const online =
-user.online !== false;
-
-div.innerHTML = `
-
-<div class="avatar">
-
-${escapeHTML(user.avatar)}
-
-<span class="${
-online
-? "online-dot"
-: "offline-dot"
-}"></span>
-
-</div>
-
-<div class="info">
-
-<b>${escapeHTML(user.name)}</b>
-
-<span>
-${
-online
-? "● آنلاین"
-: "○ آفلاین"
-}
-</span>
-
-</div>
-
-`;
-
-div.onclick =
-()=>openChat(user.name);
-
-list.appendChild(div);
-
-});
-
-}
-
-
-/* OPEN CHAT */
-
-function openChat(username){
-
-const user =
-getUsers().find(
-u=>u.name===username
-);
-
-if(!user) return;
-
-currentChat = username;
-
-document.getElementById("home")
-.style.display = "none";
-
-document.getElementById("chat")
-.style.display = "flex";
-
-document.getElementById("chatName")
-.textContent = user.name;
-
-document.getElementById("chatAvatar")
-.firstChild.textContent =
-user.avatar;
-
-document.getElementById("chatStatus")
-.textContent =
-user.online !== false
-? "● آنلاین"
-: "○ آفلاین";
-
-document.getElementById("chatStatus")
-.className =
-user.online !== false
-? "status-online"
-: "status-offline";
-
-loadMessages();
-
-}
-
-
-/* CLOSE CHAT */
-
-function closeChat(){
-
-currentChat = null;
-
-document.getElementById("chat")
-.style.display = "none";
-
-document.getElementById("home")
-.style.display = "block";
-
-renderCurrentPage();
-
-}
-
-
-/* LOAD */
-
-function loadMessages(){
-
-const box =
-document.getElementById("messages");
-
-const messages =
-getChat(currentChat);
-
-box.innerHTML = "";
-
-messages.forEach(msg=>{
-
-const div =
-document.createElement("div");
-
-div.className =
-"msg " +
-(msg.sender===currentUser
-? "me"
-: "other");
-
-div.innerHTML =
-`${escapeHTML(msg.text)}
-<span class="msg-time">
-${msg.time}
-</span>`;
-
-box.appendChild(div);
-
-});
-
-box.scrollTop =
-box.scrollHeight;
-
-}
-
-
-/* SEND */
-
-function sendMessage(){
-
-const input =
-document.getElementById("messageInput");
-
-const text =
-input.value.trim();
-
-if(!text || !currentChat)
-return;
-
-const key =
-chatKey(currentUser,currentChat);
-
-const messages =
-JSON.parse(
-localStorage.getItem(key)||"[]"
-);
-
-const now =
-new Date();
-
-messages.push({
-
-sender:currentUser,
-
-text:text,
-
-time:now.toLocaleTimeString(
-"fa-IR",
-{
-hour:"2-digit",
-minute:"2-digit"
-}
-),
-
-timestamp:Date.now()
-
-});
-
-localStorage.setItem(
-key,
-JSON.stringify(messages)
-);
-
-input.value = "";
-
-loadMessages();
-
-}
-
-
-/* CLEAR */
-
-function clearChat(){
-
-if(!currentChat)
-return;
-
-localStorage.removeItem(
-chatKey(currentUser,currentChat)
-);
-
-loadMessages();
-
-}
-
-
-/* PROFILE */
-
-function openProfile(){
-
-const user =
-getUsers().find(
-u=>u.name===currentUser
-);
-
-if(!user) return;
-
-selectedProfileAvatar =
-user.avatar;
-
-document.getElementById("profilePage")
-.style.display = "block";
-
-document.getElementById("profileBigAvatar")
-.textContent = user.avatar;
-
-document.getElementById("profilePageName")
-.textContent = user.name;
-
-document.getElementById("editName")
-.value = user.name;
-
-}
-
-
-function closeProfile(){
-
-document.getElementById("profilePage")
-.style.display = "none";
-
-}
-
-
-function chooseAvatar(button,avatar){
-
-selectedProfileAvatar = avatar;
-
-document.querySelectorAll(".avatar-choice")
-.forEach(x=>
-x.classList.remove("selected")
-);
-
-button.classList.add("selected");
-
-document.getElementById("profileBigAvatar")
-.textContent = avatar;
-
-}
-
 
 function saveProfile(){
 
-const newName =
-document.getElementById("editName")
-.value.trim();
+    const me=getMe();
 
-const error =
-document.getElementById("profileError");
+    const oldName=me.name;
+    const newName=document.getElementById("usernameInput").value.trim();
+    const status=document.getElementById("statusInput").value.trim();
 
-error.textContent = "";
+    if(!newName){
+        alert("نام کاربری نمی‌تواند خالی باشد.");
+        return;
+    }
 
-if(newName.length < 3){
+    if(newName!==oldName &&
+       users.some(u=>u.name.toLowerCase()===newName.toLowerCase())){
+        alert("این نام کاربری قبلاً استفاده شده است.");
+        return;
+    }
 
-error.textContent =
-"نام کاربری حداقل ۳ کاراکتر باشد.";
+    /* MIGRATE CHATS */
+    if(newName!==oldName){
 
-return;
+        users
+        .filter(u=>u.name!==oldName)
+        .forEach(other=>{
 
+            const oldKey=chatKey(oldName,other.name);
+            const newKey=chatKey(newName,other.name);
+
+            const messages=JSON.parse(
+                localStorage.getItem(oldKey)||"[]"
+            );
+
+            if(messages.length){
+
+                messages.forEach(m=>{
+                    if(m.sender===oldName){
+                        m.sender=newName;
+                    }
+                });
+
+                localStorage.setItem(
+                    newKey,
+                    JSON.stringify(messages)
+                );
+
+                localStorage.removeItem(oldKey);
+            }
+
+            const oldRead=localStorage.getItem(
+                readKey(oldName,other.name)
+            );
+
+            if(oldRead){
+                localStorage.setItem(
+                    readKey(newName,other.name),
+                    oldRead
+                );
+
+                localStorage.removeItem(
+                    readKey(oldName,other.name)
+                );
+            }
+        });
+
+        me.name=newName;
+        currentUser=newName;
+
+        localStorage.setItem(
+            CURRENT_KEY,
+            newName
+        );
+    }
+
+    me.avatar=selectedAvatar;
+    me.status=status||"در Nebula هستم 🌌";
+    me.online=true;
+
+    saveUsers();
+
+    updateMeUI();
+    renderCurrentList();
+
+    alert("پروفایل با موفقیت ذخیره شد 🌌");
 }
 
-const users = getUsers();
+/* =========================
+   RESET
+========================= */
 
-const exists =
-users.some(
-u =>
-u.name.toLowerCase() ===
-newName.toLowerCase()
-&&
-u.name !== currentUser
-);
+function resetApp(){
 
-if(exists){
+    if(!confirm("همه اطلاعات Nebula پاک شود؟"))return;
 
-error.textContent =
-"این نام قبلاً استفاده شده.";
-
-return;
-
+    localStorage.clear();
+    location.reload();
 }
 
-const user =
-users.find(
-u=>u.name===currentUser
-);
+/* =========================
+   SECURITY HELPERS
+========================= */
 
-if(!user) return;
-
-user.name = newName;
-
-user.avatar =
-selectedProfileAvatar;
-
-saveUsers(users);
-
-currentUser = newName;
-
-localStorage.setItem(
-"nebulaCurrentUser",
-newName
-);
-
-document.getElementById("myName")
-.textContent = newName;
-
-document.getElementById("myAvatar")
-.textContent = selectedProfileAvatar;
-
-document.getElementById("profilePageName")
-.textContent = newName;
-
-alert("پروفایل با موفقیت ذخیره شد ✅");
-
-closeProfile();
-
-renderCurrentPage();
-
+function escapeHTML(str){
+    return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 }
 
-
-/* SETTINGS */
-
-function openSettings(){
-
-document.getElementById("settings")
-.style.display = "block";
-
+function escapeAttribute(str){
+    return String(str)
+        .replaceAll("\\","\\\\")
+        .replaceAll("'","\\'");
 }
 
+/* =========================
+   START
+========================= */
 
-function closeSettings(){
-
-document.getElementById("settings")
-.style.display = "none";
-
-}
-
-
-/* LOGOUT */
-
-function logout(){
-
-const users = getUsers();
-
-const user =
-users.find(
-u=>u.name===currentUser
-);
-
-if(user){
-
-user.online = false;
-
-saveUsers(users);
-
-}
-
-localStorage.removeItem(
-"nebulaCurrentUser"
-);
-
-currentUser = null;
-
-document.getElementById("home")
-.style.display = "none";
-
-document.getElementById("chat")
-.style.display = "none";
-
-document.getElementById("profilePage")
-.style.display = "none";
-
-document.getElementById("settings")
-.style.display = "none";
-
-document.getElementById("auth")
-.style.display = "flex";
-
-}
-
-
-/* ESCAPE */
-
-function escapeHTML(text){
-
-const div =
-document.createElement("div");
-
-div.textContent = text;
-
-return div.innerHTML;
-
-}
-
-
-/* DEMO USERS */
-
-function createDemoUsers(){
-
-const users = getUsers();
-
-if(users.length===0){
-
-users.push({
-
-name:"Nebula Bot",
-
-avatar:"🤖",
-
-passwordHash:"",
-
-online:true,
-
-createdAt:Date.now()
-
-});
-
-users.push({
-
-name:"Test User",
-
-avatar:"👾",
-
-passwordHash:"",
-
-online:false,
-
-createdAt:Date.now()
-
-});
-
-saveUsers(users);
-
-}
-
-}
-
-
-/* START */
-
-createDemoUsers();
-
-if(currentUser){
-
-showHome();
-
-}else{
-
-document.getElementById("auth")
-.style.display = "flex";
-
-}
-
+updateMeUI();
+renderChats();
 </script>
 
 </body>
